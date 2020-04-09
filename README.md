@@ -7,5 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+## deployed url
+[link](https://akper-gsh.herokuapp.com/)
 ## Note
 **Haram ngepush di branch ini :$&*($@
