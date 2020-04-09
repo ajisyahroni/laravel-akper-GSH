@@ -24,7 +24,7 @@ class CreateSoalsTable extends Migration
             $table->string('option_5');
             $table->string('jawaban');
 
-            $table->integer('id_prodi');
+            // $table->integer('id_prodi');
             // POSTGREE TIMESTAMP
             // $table->timestamps();
 
