@@ -17,8 +17,11 @@ Route::get('/', function () {
     return view('landing_page');
 });
 
+<<<<<<< HEAD
 Route::get('/dashboard','AdminController@dashboard');
 
+=======
+>>>>>>> 07874a50d289f0200582ea16e6842a26c9cb0460
 
 // ADMIN GROUP
 Route::group(['prefix' => 'admin/view'], function () {
