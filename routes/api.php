@@ -18,5 +18,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/createUser', 'UserController@createUser');
-Route::get('/getUser/id={id}', 'UserController@activateUser');
+
+// USER ROUTE
+Route::group(['prefix' => 'user'], function () {
+    Route::post('/create', 'UserController@createUser');
+    Route::get('/activate/id={id}', 'UserController@activateUser');
+});
+
+// SOAL ROUTE
+Route::group(['prefix' => 'soal'], function () {
+    Route::get('/all', 'SoalController@indexRandom');
+    Route::post('/create', 'SoalController@create');
+    Route::post('/koreksi', 'SoalController@correct');
+    Route::put('/update/id={id}', 'SoalController@update');
+    Route::delete('/delete/id={id}', 'SoalController@destroy');
+});
