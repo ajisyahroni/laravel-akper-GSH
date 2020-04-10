@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\User;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -44,6 +45,7 @@ class UserController extends Controller
         // update user password
         $singleUser = User::where('id', $id)->first();
         $singleUser->password = bcrypt($noencrypt_pass);
+        $singleUser->hasActivated = Carbon::now()->toDateTimeString();
         $singleUser->save();
 
         return response()->json($singleUser);
