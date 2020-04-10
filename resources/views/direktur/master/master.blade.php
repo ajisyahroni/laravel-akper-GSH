@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Dashboard Admin AKPER GSH</title>
+  <title>Dashboard AKPER GSH</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
    <!-- DataTables -->
@@ -52,7 +52,7 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
-            <h5 style="font-family: Arial, Helvetica, sans-serif; color: white;" >Dashboard Admin AKPER GSH</h5>
+            <h5 style="font-family: Arial, Helvetica, sans-serif; color: white;" >Dashboard AKPER GSH</h5>
            </li>
       
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
@@ -156,7 +156,7 @@
           <img src="../../img/me.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="/admin/view/dashboard" class="d-block">hai admin</a>
+          <a href="/admin/view/dashboard" class="d-block">Hai Direktur</a>
         </div>
       </div>
       
@@ -177,23 +177,14 @@
             
           </li>
           <li class="nav-item has-treeview">
-            <a href="/admin/view/dashboard" class="nav-link">
+            <a href="/direktur/view/dashboard" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
-            
           <li class="nav-item">
-            <a href="/admin/view/soal" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Soal
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/admin/view/login" class="nav-link">
+            <a href="/direktur/view/login" class="nav-link">
 
               <p style="font-size: 20px;"  class="badge badge-danger" >
                 keluar
