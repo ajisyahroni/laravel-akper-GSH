@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends('user/layout/main')
 @section('title','Dashboard')
 
@@ -84,3 +85,19 @@
     </div>
   </div>
 @endsection
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    dashboard user
+</body>
+
+</html>
+>>>>>>> f0c853123e7111990090e7940f204a2181a14de3
