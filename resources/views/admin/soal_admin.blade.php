@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 @extends('admin.master.master')
-
 @section('content')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -270,19 +268,3 @@
   </div>
   @endsection
   
-=======
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    soal
-</body>
-
-</html>
->>>>>>> 07874a50d289f0200582ea16e6842a26c9cb0460
