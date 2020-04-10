@@ -56,3 +56,5 @@ Route::group(['prefix' => 'user/view'], function () {
         return view('user/test_user');
     });
 });
+
+

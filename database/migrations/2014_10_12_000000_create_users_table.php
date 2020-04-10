@@ -15,10 +15,10 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('nama');
             $table->string('email')->unique();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->rememberToken();
 
             // ANOTHER DATA FIELD
@@ -46,11 +46,6 @@ class CreateUsersTable extends Migration
             $table->string('pendidikan_terakhir');
             $table->float('rata_nem');
 
-            // PRODY
-            $table->integer('id_prodi_pilihan_1');
-            $table->integer('id_prodi_pilihan_2')->nullable();
-            $table->integer('id_prodi_pilihan_3')->nullable();
-            $table->integer('id_prodi_pilihan_4')->nullable();
 
             // FOR STATUS
             $table->boolean('isCBT')->nullable();
