@@ -34,6 +34,7 @@ class CreateUsersTable extends Migration
             $table->string('berat_badan');
             $table->string('foto_url');
             $table->string('ijazah_url');
+            $table->string('tf_url')->nullable();
 
             // ALAMAT FIELD
             $table->string('kota');

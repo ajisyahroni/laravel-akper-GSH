@@ -9,6 +9,9 @@ use Carbon\Carbon;
 
 class UserController extends Controller
 {
+    // PROPERTY HERE
+    private $folderFoto = "uploads/foto";
+    private $folderIjazah = "uploads/ijazah";
     /**
      * Display a listing of the resource.
      *
@@ -64,6 +67,26 @@ class UserController extends Controller
     {
         $input = $req->all();
 
+        $foto_url = "";
+        $ijazah_url = "";
+
+
+        if (env('APP_ENV', 'local')) {
+            $foto_file = $req->file('foto_file');
+            $ijazah_file = $req->file('ijazah_file');
+
+            // // UPLOAD FOTO
+            $foto_url = "/$this->folderFoto/" . time() . "_" . $foto_file->getClientOriginalName();
+            $foto_file->move($this->folderFoto, $foto_url);
+
+            // UPLOAD IJAZAH
+            $ijazah_url = "/$this->folderIjazah/" . time() . "_" . $ijazah_file->getClientOriginalName();
+            $ijazah_file->move($this->folderIjazah, $ijazah_url);
+        }
+        
+        $input['foto_url'] = $foto_url;
+        $input['ijazah_url'] = $ijazah_url;
+
         $rules = [
             'nama' => 'required|string',
             'email' => 'required|unique:users',
@@ -103,7 +126,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // 
     }
 
     /**
