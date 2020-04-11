@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,6 +25,18 @@
       </header><!-- End Header -->
       <div class="container">
       <form class="bg-light shadow-sm p-4 rounded mb-5">
+=======
+<<<<<<< HEAD
+@extends('user/layout/main')
+
+@section('title','Regestrasi')
+
+@section('container')
+<div class="container">
+    <h3>AKPER GSH</h3>
+    <hr class="my-3">
+    <form class="bg-light shadow-sm p-4 rounded mb-5">
+>>>>>>> 34799583115cbbc2c6d942729742cabe6be2e426
         <div class="row">
           <div class="col">
               <h5>Data Diri Pendaftar</h5>
@@ -212,6 +225,7 @@
                 <label class="custom-control-label" for="auth">Saya Bersedia Mengambil test Online</label>
             </div>
             <p class="text-muted">*setelah anda melakukan registrasi harap cek email untuk informasi akun</p>
+<<<<<<< HEAD
             <button class="btn btn-primary btn-block" type="submit">Regestrasi</button>
         </div>
       </form>
@@ -234,3 +248,26 @@
 </body>
 
 </html>
+=======
+            <button class="btn btn-primary" type="submit">Regestrasi</button>
+        </div>
+      </form>
+</div>
+@endsection
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    registration
+</body>
+
+</html>
+>>>>>>> f0c853123e7111990090e7940f204a2181a14de3
+>>>>>>> 34799583115cbbc2c6d942729742cabe6be2e426

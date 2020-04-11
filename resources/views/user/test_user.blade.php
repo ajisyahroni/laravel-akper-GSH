@@ -1,9 +1,83 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+@extends('user/layout/main')
+@section('title','Test')
+
+@section('container')
+<div class="container">
+    <h1>Test AKPER GSH</h1>
+    <hr>
+</div>
+<div class="container bg-light rounded my-3">
+    <form action="">
+        <div class="row d-block p-3">
+            <h5>Apa yang dimaksud dengan etik dasar keperawatan?</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="pilihan" id="pilihan_1" value="" checked>
+                <label class="form-check-label" for="pilihan_1">
+                  Kode Etik adalah ...
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="pilihan" id="pilihan_2" value="">
+                <label class="form-check-label" for="pilihan_2">
+                  Kode Etik adalah ...
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="pilihan" id="pilihan_3" value="">
+                <label class="form-check-label" for="pilihan_3">
+                  Kode Etik adalah ...
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="pilihan" id="pilihan_4" value="">
+                <label class="form-check-label" for="pilihan_4">
+                  Kode Etik adalah ...
+                </label>
+            </div>
+        </div>
+        <div class="row d-block p-3">
+            <h5>Apa tujuan dasar keperawatan?</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="pilihan_2" id="pilihan_1" value="" checked>
+                <label class="form-check-label" for="pilihan_1">
+                  Kode Etik adalah ...
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="pilihan_2" id="pilihan_2" value="">
+                <label class="form-check-label" for="pilihan_2">
+                  Kode Etik adalah ...
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="pilihan_2" id="pilihan_3" value="">
+                <label class="form-check-label" for="pilihan_3">
+                  Kode Etik adalah ...
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="pilihan_2" id="pilihan_4" value="">
+                <label class="form-check-label" for="pilihan_4">
+                  Kode Etik adalah ...
+                </label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-5" style="padding-left:100px;padding-right:100px;">Submit</button>
+    </form>
+</div>
+@endsection
+=======
+>>>>>>> 34799583115cbbc2c6d942729742cabe6be2e426
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <link href="{{url("assets/img/favicon.png")}}" rel="icon">
     <link href="{{url("assets/img/apple-touch-icon.png")}}" rel="apple-touch-icon">
     <link rel="stylesheet" href="{{url("assets/vendor/bootstrap/css/bootstrap.min.css")}}">
@@ -105,3 +179,14 @@
 </body>
 
 </html>
+=======
+    <title>Document</title>
+</head>
+
+<body>
+    test user
+</body>
+
+</html>
+>>>>>>> f0c853123e7111990090e7940f204a2181a14de3
+>>>>>>> 34799583115cbbc2c6d942729742cabe6be2e426

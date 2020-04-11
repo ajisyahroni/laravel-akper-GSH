@@ -1,9 +1,42 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+@extends('user/layout/main')
+
+@section('title','Login')
+
+@section('container')
+<div class="container">
+    <h1 class="display-3">AKPER GSH</h1>
+    <hr class="my-3">
+</div>
+<div class="container bg-light shadow p-4 rounded my-5 w-50">
+    <h1 class="display-5">Login</h1>
+    <form>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+          <small id="emailHelp" class="form-text text-muted">Email Jangan Sampai Ada yang Tau Selain Anda</small>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password">
+        </div>
+        Belum Mendaftar?, Klik
+        <a class="text-muted" href="registration">Regestrasi</a><br>
+        <button type="submit" class="btn btn-primary mt-2">Login</button>
+      </form>
+</div>
+@endsection
+=======
+>>>>>>> 34799583115cbbc2c6d942729742cabe6be2e426
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <link href="{{url("assets/img/favicon.png")}}" rel="icon">
     <link href="{{url("assets/img/apple-touch-icon.png")}}" rel="apple-touch-icon">
     <link rel="stylesheet" href="{{url("assets/vendor/bootstrap/css/bootstrap.min.css")}}">
@@ -49,3 +82,14 @@
 </body>
 
 </html>
+=======
+    <title>Document</title>
+</head>
+
+<body>
+    login user
+</body>
+
+</html>
+>>>>>>> f0c853123e7111990090e7940f204a2181a14de3
+>>>>>>> 34799583115cbbc2c6d942729742cabe6be2e426
