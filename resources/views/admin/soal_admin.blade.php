@@ -44,30 +44,39 @@
               <div class="card-body">
                   <div class="container" >
                       <div class="row">
-                          <div class="col-11 ">
+                          <div class="col-10 ">
                             <h5>1. Apakah Yang di maksud dengan ?</h5>
                           </div>
-                          <div class="col-1-sm mb-5">
-                              <div>
-                                <button type="button" 
-                                 class="btn-sm btn-success"
-                                 data-toggle="modal" 
-                                data-target="#editsoal" >edit</button>
+                          <div class="col-1-sm mr-2 ml-5 ">
+                              <div style="color: green;  "  >
+                                <i class="fas fa-edit"  data-toggle="modal" 
+                                data-target="#editsoal">
+                              <p>Edit Soal</p></i>
                               </div>
-                            <div class="mt-2-sm" >
-                                <button  type="button"  class="btn-sm btn-danger" >hapus</button>
-                            </div>
+                            
                            
                           </div>
+                          <div class="col-1-sm ">
+                            <div style="color: red; " >
+                              <i class="fas fa-trash">
+                                <p>Hapus</p>
+                              </i>
+                            </div>
+                          </div>
                       </div>
-               
-               <div class="form-check mt-3 ">
+               <div class="form-check">
                 <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
                 <label class="form-check-label" for="exampleRadios1">
                   ... adalah
                 </label>
               </div>
               <div class="form-check mt-3">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                <label class="form-check-label" for="exampleRadios2">
+                  ... adalah
+                </label>
+              </div>
+              <div class="form-check mt-3 ">
                 <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
                 <label class="form-check-label" for="exampleRadios2">
                   ... adalah
