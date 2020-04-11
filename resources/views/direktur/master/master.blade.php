@@ -18,6 +18,11 @@
   <link rel="stylesheet" href="/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <style>
+    .lolita{
+      margin-top: 300px;
+    }
+  </style>
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -176,21 +181,32 @@
               </div>
             
           </li>
-          <li class="nav-item has-treeview">
-            <a href="/direktur/view/dashboard" class="nav-link">
+          <li class="nav-item has-treeview mt-2">
+            <a href="/admin/view/dashboard" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
+            
           <li class="nav-item">
-            <a href="/direktur/view/login" class="nav-link">
-
-              <p style="font-size: 20px;"  class="badge badge-danger" >
-                keluar
-              </p>
+            <a href="/admin/view/soal" class="nav-link">
+              
             </a>
           </li>
+          
+          <div class="lolita ">
+            <div class="user-panel mb-3" ></div>
+            <li class="nav-item">
+              <a href="/admin/view/login" class="nav-link">
+  
+                <p style="font-size: 20px;"  class="badge badge-danger" >
+                  keluar
+                </p>
+              </a>
+            </li>
+          </div>
+         
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -202,9 +218,9 @@
 
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-     
+      <b>Wonogiri</b> 
     </div>
-    <strong> 
+    <strong>Copyright &copy; 2020 AKPER GSH</strong>
   </footer>
 
   <!-- Control Sidebar -->

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 @extends('admin.master.master')
 
 @section('content')
@@ -48,9 +48,8 @@
                     </td>
                     <td>Yogyakarta</td>
                     <td> Belum Aktifasi</td>
-                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cekbelum">
-                      Cek
-                    </button></td>
+                    <td><i style="color: green" class="fas fa-check-circle mr-2" data-toggle="modal" data-target="#cekbelum" ></i>
+                      <a href="/admin/view/detail"><i style="color: blue" class="fas fa-id-card"></i></a></td>
                   </tr>
                   <tr>
                     <td>Adi Yoga Prakasa</td>
@@ -58,9 +57,8 @@
                     </td>
                     <td>Yogyakarta</td>
                     <td> belum aktivasi</td>
-                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cekbelum">
-                      Cek
-                    </button></td>
+                    <td><i style="color: green" class="fas fa-check-circle mr-2" data-toggle="modal" data-target="#cekbelum" ></i>
+                      <a href="/admin/view/detail"><i style="color: blue" class="fas fa-id-card"></i></a></td>
                   </tr>
                   </tbody>
                 </table>
@@ -145,20 +143,6 @@
     <!-- /.content -->
   </div>
   @endsection
-  
-=======
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    dashboard
-</body>
 
 </html>
->>>>>>> 07874a50d289f0200582ea16e6842a26c9cb0460
+
