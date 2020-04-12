@@ -8,4 +8,4 @@
 </p>
 
 ## Note
-branch khusus pakde
+branch ini merupakan gabungan dari dev/pakde dan dev/pengges
