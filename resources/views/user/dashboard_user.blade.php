@@ -129,20 +129,42 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="upload">Upload Bukti TF regestrasi</h5>
+          <h5 class="modal-title" id="upload">Upload Bukti TF registrasi</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           <form action="">
-            <img src="..." class="img-fluid" alt="Foto bukti TF">
+            <div class="text-center mx-auto">
+              <img id="previewTF" src="{{ asset('img/upload.png') }}" class="img-fluid rounded" alt="Foto bukti TF">
+            </div>
             <div class="custom-file my-3">
               <input type="file" class="custom-file-input" id="foto_bukti_tf">
               <label class="custom-file-label" for="foto_bukti_tf">Upload Bukti TF</label>
             </div>
-            <button class="btn btn-primary" type="submit">Upload</button>
+            <button class="btn btn-danger btn-block" type="submit">Upload</button>
           </form>
+          <script>
+            // mengambil element html dengan id
+            var foto = document.getElementById("foto_bukti_tf")
+            var fotoPreview = document.getElementById("previewTF")
+
+            // membuat event onchange
+            foto.onchange = function(evt) {
+
+              var reader = new FileReader()
+              var file = evt.target.files[0]
+
+              reader.onload = function() {
+                fotoPreview.src = reader.result
+                fotoPreview.width = "300"
+                fotoPreview.height = "300"
+              }
+
+              reader.readAsDataURL(file)
+            }
+          </script>
         </div>
       </div>
     </div>
