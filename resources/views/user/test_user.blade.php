@@ -62,7 +62,7 @@
                 </label>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary mt-5" style="padding-left:100px;padding-right:100px;">Submit</button>
+        <button type="submit" class="btn btn-danger mt-5 float-right" style="padding-left:100px;padding-right:100px;">Submit</button>
     </form>
 </div>
 @endsection
