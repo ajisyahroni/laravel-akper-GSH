@@ -23,6 +23,13 @@ class UserController extends Controller
         $user = User::all();
         return response()->json($user);
     }
+
+    public function indexById($id)
+    {
+        $user = User::find($id)->first();
+        return response()->json($user);
+    }
+
     private function pin_generator()
     {
         $alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];

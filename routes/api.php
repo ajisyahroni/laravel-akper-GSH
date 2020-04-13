@@ -21,6 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // USER ROUTE
 Route::group(['prefix' => 'user'], function () {
+    Route::get('/all', 'UserController@index');
+    Route::get('/id={id}', 'UserController@indexById');
     Route::post('/create', 'UserController@createUser');
     Route::post('/activate/id={id}', 'UserController@activateUser');
 });
