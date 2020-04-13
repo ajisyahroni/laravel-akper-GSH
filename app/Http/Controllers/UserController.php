@@ -26,7 +26,7 @@ class UserController extends Controller
 
     public function indexById($id)
     {
-        $user = User::find($id)->first();
+        $user = User::where('id', $id)->first();
         return response()->json($user);
     }
 
