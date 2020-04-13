@@ -83,7 +83,7 @@ class UserController extends Controller
             $ijazah_url = "/$this->folderIjazah/" . time() . "_" . $ijazah_file->getClientOriginalName();
             $ijazah_file->move($this->folderIjazah, $ijazah_url);
         }
-        
+
         $input['foto_url'] = $foto_url;
         $input['ijazah_url'] = $ijazah_url;
 
@@ -108,6 +108,7 @@ class UserController extends Controller
             'kodepos' => 'required|numeric',
             'pendidikan_terakhir' => 'required|string',
             'rata_nem' => 'required',
+            'isCBT' => 'required|numeric'
         ];
         $validator = Validator::make($input, $rules);
         if ($validator->fails()) {
