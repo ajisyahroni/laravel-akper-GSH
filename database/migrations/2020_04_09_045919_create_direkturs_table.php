@@ -19,12 +19,14 @@ class CreateDirektursTable extends Migration
             $table->string('nama');
             $table->string('email')->unique();
             $table->string('password');
-            // POSTGREE TIMESTAMP
-            // $table->timestamps();
-
-            // MY SQL TIMESTAMP
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
+            if (env('DB_CONNECTION', 'mysql')) {
+                // MY SQL TIMESTAMP
+                $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+                $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
+            } else {
+                // POSTGREE TIMESTAMP
+                $table->timestamps();
+            }
 
             $table->softDeletes();
         });
