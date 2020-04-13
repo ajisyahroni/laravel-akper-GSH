@@ -32,8 +32,12 @@
   </header><!-- End Header -->
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div class="row d-flex justify-content-center">
   <div class="mt-5 bg-light shadow-sm rounded">
+=======
+  <div class="container w-50 mt-5 bg-light shadow-sm rounded">
+>>>>>>> e632893ba9b4c3bb4220d4286fee70c2173f41e1
 =======
   <div class="container w-50 mt-5 bg-light shadow-sm rounded">
 >>>>>>> e632893ba9b4c3bb4220d4286fee70c2173f41e1
@@ -57,7 +61,10 @@
     </form>
   </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 </div>
+=======
+>>>>>>> e632893ba9b4c3bb4220d4286fee70c2173f41e1
 =======
 >>>>>>> e632893ba9b4c3bb4220d4286fee70c2173f41e1
 </body>

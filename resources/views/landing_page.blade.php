@@ -126,7 +126,11 @@
           </div>
           <div class="col-lg-4 pt-4 pt-lg-0 content">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <a href="user/view/registration" class="btn btn-danger float-lg-right my-3 py-2" style="padding:0 50px 0 50px;">Registrasi</a>
+=======
+            <a href="user/view/registration" class="btn btn-danger float-lg-right my-lg-3 py-2" style="padding:0 50px 0 50px;">Registrasi</a>
+>>>>>>> e632893ba9b4c3bb4220d4286fee70c2173f41e1
 =======
             <a href="user/view/registration" class="btn btn-danger float-lg-right my-lg-3 py-2" style="padding:0 50px 0 50px;">Registrasi</a>
 >>>>>>> e632893ba9b4c3bb4220d4286fee70c2173f41e1
@@ -148,7 +152,11 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="icon-box">
 <<<<<<< HEAD
+<<<<<<< HEAD
               <img class="img-thumbnail img-fluid" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-1.jpg" alt="">
+=======
+              <img class="img-thumbnail" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-1.jpg" alt="">
+>>>>>>> e632893ba9b4c3bb4220d4286fee70c2173f41e1
 =======
               <img class="img-thumbnail" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-1.jpg" alt="">
 >>>>>>> e632893ba9b4c3bb4220d4286fee70c2173f41e1
@@ -160,7 +168,11 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
             <div class="icon-box">
 <<<<<<< HEAD
+<<<<<<< HEAD
               <img class="img-thumbnail img-fluid" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-2.jpg" alt="">
+=======
+              <img class="img-thumbnail" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-2.jpg" alt="">
+>>>>>>> e632893ba9b4c3bb4220d4286fee70c2173f41e1
 =======
               <img class="img-thumbnail" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-2.jpg" alt="">
 >>>>>>> e632893ba9b4c3bb4220d4286fee70c2173f41e1
@@ -172,7 +184,11 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
             <div class="icon-box">
 <<<<<<< HEAD
+<<<<<<< HEAD
               <img class="img-thumbnail img-fluid" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-3.jpg" alt="">
+=======
+              <img class="img-thumbnail" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-3.jpg" alt="">
+>>>>>>> e632893ba9b4c3bb4220d4286fee70c2173f41e1
 =======
               <img class="img-thumbnail" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-3.jpg" alt="">
 >>>>>>> e632893ba9b4c3bb4220d4286fee70c2173f41e1
@@ -191,7 +207,11 @@
         <h2 >Biaya Kuliah</h2>
       </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <div class="row table-responsive my-4">
+=======
+      <div class="row my-4">
+>>>>>>> e632893ba9b4c3bb4220d4286fee70c2173f41e1
 =======
       <div class="row my-4">
 >>>>>>> e632893ba9b4c3bb4220d4286fee70c2173f41e1
