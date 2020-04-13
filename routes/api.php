@@ -22,7 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // USER ROUTE
 Route::group(['prefix' => 'user'], function () {
     Route::post('/create', 'UserController@createUser');
-    Route::get('/activate/id={id}', 'UserController@activateUser');
+    Route::post('/activate/id={id}', 'UserController@activateUser');
 });
 
 // SOAL ROUTE

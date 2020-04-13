@@ -12,6 +12,7 @@ class UserController extends Controller
     // PROPERTY HERE
     private $folderFoto = "uploads/foto";
     private $folderIjazah = "uploads/ijazah";
+    private $folderTransfer = "uploads/transfer";
     /**
      * Display a listing of the resource.
      *
@@ -40,15 +41,20 @@ class UserController extends Controller
         return $get_rand_string;
     }
 
-    public function activateUser($id)
+    public function activateUser(Request $req, $id)
     {
         // password
-        $noencrypt_pass = $this->pin_generator();
+        // $noencrypt_pass = $this->pin_generator();
+        // GET TRANSFER FILE
+        $bukti_tf_file = $req->file('file_bukti_transfer');
+        $bukti_tf_url = "/$this->folderFoto/" . time() . "_" . $bukti_tf_file->getClientOriginalName();
+        $bukti_tf_file->move($this->folderTransfer, $bukti_tf_url);
 
         // update user password
         $singleUser = User::where('id', $id)->first();
-        $singleUser->password = bcrypt($noencrypt_pass);
+        // $singleUser->password = bcrypt($noencrypt_pass);
         $singleUser->hasActivated = Carbon::now()->toDateTimeString();
+        $singleUser->tf_url = $bukti_tf_url;
         $singleUser->save();
 
         return response()->json($singleUser);
@@ -65,11 +71,40 @@ class UserController extends Controller
     }
     public function createUser(Request $req)
     {
+        $rules = [
+            'nama' => 'required|string',
+            'email' => 'required|unique:users',
+            'nik' => 'required|string',
+            'tempat_lahir' => 'required|string',
+            'tanggal_lahir' => 'required|date',
+            'agama' => 'required|string',
+            'kewarganegaraan' => 'required|string',
+            'telepon' => 'required|string',
+            'nama_ibu_kandung' => 'required|string',
+            'nama_ayah_kandung' => 'required|string',
+            'tinggi_badan' => 'required|numeric',
+            'berat_badan' => 'required|numeric',
+            'foto_file' => 'required',
+            'ijazah_file' => 'required',
+            'kota' => 'required|string',
+            'kecamatan' => 'required|string',
+            'alamat' => 'required|string',
+            'kodepos' => 'required|numeric',
+            'pendidikan_terakhir' => 'required|string',
+            'rata_nem' => 'required',
+            'isCBT' => 'required|numeric',
+            'password' => 'required|string|min:6'
+        ];
         $input = $req->all();
 
         $foto_url = "";
         $ijazah_url = "";
 
+        $validator = Validator::make($input, $rules);
+        if ($validator->fails()) {
+            $error = $validator->errors()->all();
+            return $error;
+        }
 
         if (env('APP_ENV', 'local')) {
             $foto_file = $req->file('foto_file');
@@ -86,35 +121,7 @@ class UserController extends Controller
 
         $input['foto_url'] = $foto_url;
         $input['ijazah_url'] = $ijazah_url;
-
-        $rules = [
-            'nama' => 'required|string',
-            'email' => 'required|unique:users',
-            'nik' => 'required|string',
-            'tempat_lahir' => 'required|string',
-            'tanggal_lahir' => 'required|date',
-            'agama' => 'required|string',
-            'kewarganegaraan' => 'required|string',
-            'telepon' => 'required|string',
-            'nama_ibu_kandung' => 'required|string',
-            'nama_ayah_kandung' => 'required|string',
-            'tinggi_badan' => 'required|numeric',
-            'berat_badan' => 'required|numeric',
-            'foto_url' => 'required|string',
-            'ijazah_url' => 'required|string',
-            'kota' => 'required|string',
-            'kecamatan' => 'required|string',
-            'alamat' => 'required|string',
-            'kodepos' => 'required|numeric',
-            'pendidikan_terakhir' => 'required|string',
-            'rata_nem' => 'required',
-            'isCBT' => 'required|numeric'
-        ];
-        $validator = Validator::make($input, $rules);
-        if ($validator->fails()) {
-            $error = $validator->errors()->all();
-            return $error;
-        }
+        $input['password'] = bcrypt($req->password);
         User::create($input);
         return response()->json(['msg' => 'created'], 200);
     }
