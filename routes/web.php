@@ -17,7 +17,6 @@ Route::get('/', function () {
     return view('landing_page');
 });
 
-
 // ADMIN GROUP
 Route::group(['prefix' => 'admin/view'], function () {
     Route::get('/login', function () {
@@ -25,6 +24,9 @@ Route::group(['prefix' => 'admin/view'], function () {
     });
     Route::get('/dashboard', function () {
         return view('admin/dashboard_admin');
+    });
+    Route::get('/detail', function () {
+        return view('admin/detail');
     });
     Route::get('/soal', function () {
         return view('admin/soal_admin');

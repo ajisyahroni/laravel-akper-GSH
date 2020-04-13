@@ -35,3 +35,7 @@ Route::group(['prefix' => 'soal'], function () {
     Route::put('/update/id={id}', 'SoalController@update');
     Route::delete('/delete/id={id}', 'SoalController@destroy');
 });
+// FORCES HTTPS SCHEMA
+if (App::environment('production')) {
+    URL::forceScheme('https');
+}
