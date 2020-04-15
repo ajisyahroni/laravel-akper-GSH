@@ -42,8 +42,8 @@
     <div class="d-flex flex-column">
 
       <div class="profile">
-        <img src="{{url('assets/img/testimonials/testimonials-2.jpg')}}" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Samanta Ming</a></h1>
+        <img src="{{url($user->foto_url)}}" alt="" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="index.html">{{ $user->nama }}</a></h1>
       </div>
 
       <nav class="nav-menu">

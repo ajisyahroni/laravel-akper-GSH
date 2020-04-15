@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
@@ -94,9 +95,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function login(Request $request)
     {
-        //
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            return view('user/dashboard_user', ['user' => Auth::user()]);
+        }
     }
     public function createUser(Request $req)
     {
@@ -165,7 +169,7 @@ class UserController extends Controller
 
         User::create($input);
         // return response()->json(['msg' => 'created'], 200);
-        return view('user/dashboard_user');
+        return view('user/login_user');
     }
 
     /**

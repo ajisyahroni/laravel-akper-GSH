@@ -22,11 +22,9 @@
 
 
 
-
+    @extends('user/layout/main')
     <form class="bg-light shadow-sm p-4 rounded" action="/api/admin/create-user" method="POST" enctype="multipart/form-data">
-        @extends('user/layout/main')
-        @section('title','Regestrasi')
-        @section('container')
+
 
         {{ csrf_field() }}
         <div class="container">
@@ -281,5 +279,3 @@
 </body>
 
 </html>
-
-@endsection

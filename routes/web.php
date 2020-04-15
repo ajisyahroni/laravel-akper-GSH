@@ -51,3 +51,7 @@ Route::group(['prefix' => 'user/view'], function () {
         return view('user/test_user');
     });
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
