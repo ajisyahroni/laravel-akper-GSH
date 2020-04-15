@@ -19,8 +19,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // LOGIN
-Route::group(['prefix'=>'auth'],function(){
-    Route::post('user/','UserController@login');
+Route::group(['prefix' => 'auth'], function () {
+    Route::post('user/', 'UserController@login');
+    Route::post('logout/', 'UserController@logout');
+});
+
+// UPLOAD USER ROUTE
+
+Route::group(['prefix' => 'user'], function () {
+    Route::post('/upload/tf', 'UserController@uploadTransfer');
 });
 
 // USER ROUTE

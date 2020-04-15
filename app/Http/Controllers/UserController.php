@@ -54,22 +54,25 @@ class UserController extends Controller
         return $get_rand_string;
     }
 
-    public function uploadTransfer(Request $req, $id)
+    public function uploadTransfer(Request $req)
     {
         // password
         // $noencrypt_pass = $this->pin_generator();
         // GET TRANSFER FILE
-        $bukti_tf_file = $req->file('file_bukti_transfer');
-        $bukti_tf_url = "/$this->folderFoto/" . time() . "_" . $bukti_tf_file->getClientOriginalName();
-        $bukti_tf_file->move($this->folderTransfer, $bukti_tf_url);
+        // $bukti_tf_file = $req->file('file_bukti_transfer');
+        // $bukti_tf_url = "/$this->folderFoto/" . time() . "_" . $bukti_tf_file->getClientOriginalName();
+        // $bukti_tf_file->move($this->folderTransfer, $bukti_tf_url);
 
         // update user password
-        $singleUser = User::where('id', $id)->first();
+        $id = Auth::check();
+        dd($id);
+        // $singleUser = User::where('id', $id)->first();
         // $singleUser->password = bcrypt($noencrypt_pass);
-        $singleUser->tf_url = $bukti_tf_url;
-        $singleUser->save();
+        // $singleUser->tf_url = $bukti_tf_url;
+        // dd($singleUser);
+        // $singleUser->save();
 
-        return response()->json($singleUser);
+        // return response()->json($singleUser);
     }
     public function activateUser($id)
     {
@@ -101,6 +104,10 @@ class UserController extends Controller
         if (Auth::attempt($credentials)) {
             return view('user/dashboard_user', ['user' => Auth::user()]);
         }
+    }
+    public function logout()
+    {
+        Auth::logout();
     }
     public function createUser(Request $req)
     {

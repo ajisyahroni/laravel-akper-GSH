@@ -75,7 +75,7 @@
               </div>
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="tahap_3" disabled>
-                <label class="custom-control-label" for="tahap_3"><a href="test">Ambil test</a></label>
+                <label class="custom-control-label" for="tahap_3"><a class="text-muted" href="test">Ambil test</a></label>
               </div>
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="tahap_4" disabled>
@@ -88,7 +88,12 @@
             <div class="row">
               <div class="col-md-6">
                 <img src="{{asset('img/activate_user.png')}}" class="img-thumbnail img-fluid w-75 mx-5 my-3" alt="foto"><br>
-                <button class="btn btn-success btn-block" data-toggle="modal" data-target="#upload_bukti_tf">Aktivasi Akun</button>
+                @if($user->hasActivated == 0)
+                <button class="btn btn-info btn-block" data-toggle="modal" data-target="#upload_bukti_tf">Aktivasi Akun</button>
+                @elseif($user->hasActivated == 1)
+                <div class="alert alert-success" role="alert">Akun anda sudah aktif</div>
+                @endif
+
               </div>
               <div class="col-md-6">
                 <img src="{{asset('img/test.png')}}" class="img-thumbnail img-fluid w-75 mx-5 my-3" alt="foto"><br>
@@ -135,12 +140,13 @@
           </button>
         </div>
         <div class="modal-body">
-          <form action="">
+          <form action="{{ url('api/user/upload/tf') }}" method="POST" enctype="multipart/form-data">
             <div class="text-center mx-auto">
+              <input type="hidden" name="user_id">
               <img id="previewTF" src="{{ asset('img/upload.png') }}" class="img-fluid rounded" alt="Foto bukti TF">
             </div>
             <div class="custom-file my-3">
-              <input type="file" class="custom-file-input" id="foto_bukti_tf">
+              <input name="file_bukti_transfer" type="file" class="custom-file-input" id="foto_bukti_tf">
               <label class="custom-file-label" for="foto_bukti_tf">Upload Bukti TF</label>
             </div>
             <button class="btn btn-danger btn-block" type="submit">Upload</button>
