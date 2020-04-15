@@ -14,6 +14,7 @@ class UserController extends Controller
     private $folderFoto = "uploads/foto";
     private $folderIjazah = "uploads/ijazah";
     private $folderTransfer = "uploads/transfer";
+    private $folderTestKesehatan = "uploads/test_kesehatan";
     /**
      * Display a listing of the resource.
      *
@@ -105,6 +106,7 @@ class UserController extends Controller
             'nik' => 'required|string',
             'tempat_lahir' => 'required|string',
             'tanggal_lahir' => 'required|date',
+            'gender' => 'required|string',
             'agama' => 'required|string',
             'kewarganegaraan' => 'required|string',
             'telepon' => 'required|string',
@@ -114,11 +116,13 @@ class UserController extends Controller
             'berat_badan' => 'required|numeric',
             'foto_file' => 'required',
             'ijazah_file' => 'required',
+            'test_kesehatan_file' => 'required',
             'kota' => 'required|string',
             'kecamatan' => 'required|string',
             'alamat' => 'required|string',
             'kodepos' => 'required|numeric',
             'pendidikan_terakhir' => 'required|string',
+            'sekolah_asal' => 'required|string',
             'rata_nem' => 'required',
             'isCBT' => 'required|numeric',
             'password' => 'required|string|min:6'
@@ -127,6 +131,7 @@ class UserController extends Controller
 
         $foto_url = "";
         $ijazah_url = "";
+        $test_kesehatan_url = "";
 
         $validator = Validator::make($input, $rules);
         if ($validator->fails()) {
@@ -137,6 +142,7 @@ class UserController extends Controller
         if (env('APP_ENV', 'local')) {
             $foto_file = $req->file('foto_file');
             $ijazah_file = $req->file('ijazah_file');
+            $test_kesehatan_file = $req->file('test_kesehatan_file');
 
             // // UPLOAD FOTO
             $foto_url = "/$this->folderFoto/" . time() . "_" . $foto_file->getClientOriginalName();
@@ -145,13 +151,21 @@ class UserController extends Controller
             // UPLOAD IJAZAH
             $ijazah_url = "/$this->folderIjazah/" . time() . "_" . $ijazah_file->getClientOriginalName();
             $ijazah_file->move($this->folderIjazah, $ijazah_url);
+
+            // TEST KESEHATAN IJAZAH
+            $test_kesehatan_url = "/$this->folderTestKesehatan/" . time() . "_" . $test_kesehatan_file->getClientOriginalName();
+            $test_kesehatan_file->move($this->folderTestKesehatan, $test_kesehatan_url);
         }
 
         $input['foto_url'] = $foto_url;
         $input['ijazah_url'] = $ijazah_url;
+        $input['test_kesehatan_url'] = $test_kesehatan_url;
+
         $input['password'] = bcrypt($req->password);
+
         User::create($input);
-        return response()->json(['msg' => 'created'], 200);
+        // return response()->json(['msg' => 'created'], 200);
+        return view('user/dashboard_user');
     }
 
     /**

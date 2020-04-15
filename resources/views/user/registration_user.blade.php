@@ -23,11 +23,12 @@
 
 
 
-    <form class="bg-light shadow-sm p-4 rounded" action="/user/view/login">
+    <form class="bg-light shadow-sm p-4 rounded" action="/api/admin/create-user" method="POST" enctype="multipart/form-data">
         @extends('user/layout/main')
         @section('title','Regestrasi')
         @section('container')
 
+        {{ csrf_field() }}
         <div class="container">
             <!-- BARIS -->
             <div class="row">
@@ -36,32 +37,32 @@
                     <hr>
                     <div class="form-group">
                         <label for="nama_lengkap">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="nama_lengkap" aria-describedby="form_data">
+                        <input name="nama" type="text" class="form-control" id="nama_lengkap" aria-describedby="form_data">
                     </div>
                     <div class="form-group">
                         <label for="nomor_ktp">Nomor KTP</label>
-                        <input type="text" class="form-control" id="nomor_ktp" aria-describedby="form_data">
+                        <input name="nik" type="text" class="form-control" id="nomor_ktp" aria-describedby="form_data">
                     </div>
                     <div class="form-group">
                         <label for="tempat_lahir">Tempat Lahir</label>
-                        <input type="text" class="form-control" id="tempat_lahir" aria-describedby="form_data">
+                        <input name="tempat_lahir" type="text" class="form-control" id="tempat_lahir" aria-describedby="form_data">
                     </div>
                     <div class="form-group">
                         <label for="tanggal_lahir">Tanggal Lahir</label>
-                        <input type="date" class="form-control" id="tempat_lahir" aria-describedby="form_data">
+                        <input name="tanggal_lahir" type="date" class="form-control" id="tempat_lahir" aria-describedby="form_data">
                     </div>
                     <div class="form-group">
                         <label for="gender">Gender</label>
-                        <select id="gender" class="custom-select">
-                            <option selected>Pilih salah satu</option>
-                            <option value="laki-laki">Laki - Laki</option>
-                            <option value="perempuan">Perempuan</option>
+                        <select name="gender" id="gender" class="custom-select">
+                            <option selected disabled value="">Pilih</option>
+                            <option value="L">Pria</option>
+                            <option value="P">Wanita</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="agama">Agama</label>
-                        <select id="agama" class="custom-select">
-                            <option selected>Pilih salah satu</option>
+                        <select name="agama" id="agama" class="custom-select">
+                            <option selected disabled value="">Pilih</option>
                             <option value="islam">Islam</option>
                             <option value="kristen">Kristen</option>
                             <option value="katolik">Katolik</option>
@@ -72,32 +73,32 @@
                     </div>
                     <div class="form-group">
                         <label for="kewarganegaraan">Kewarganegaraan</label>
-                        <select id="kewarganegaraan" class="custom-select">
-                            <option selected>Pilih salah satu</option>
+                        <select name="kewarganegaraan" id="kewarganegaraan" class="custom-select">
+                            <option selected disabled value="">Pilih</option>
                             <option value="wni">WNI</option>
                             <option value="wna">WNA</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="form_data">
+                        <input name="email" type="email" class="form-control" id="email" aria-describedby="form_data">
                     </div>
                     <div class="form-group">
                         <label for="nomor_telp">Nomor Telepon</label>
-                        <input type="text" class="form-control" id="nomor_telp" aria-describedby="form_data">
+                        <input name="telepon" type="text" class="form-control" id="nomor_telp" aria-describedby="form_data">
                     </div>
 
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
                                 <label for="tinggi_badan">Tinggi Badan</label>
-                                <input type="number" min="140" max="200" class="form-control" id="tinggi_badan" aria-describedby="form_data">
+                                <input name="tinggi_badan" type="number" min="140" max="200" class="form-control" id="tinggi_badan" aria-describedby="form_data">
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
                                 <label for="berat_badan">Berat Badan</label>
-                                <input type="number" min="35" max="150" class="form-control" id="berat_badan" aria-describedby="form_data">
+                                <input name="berat_badan" type="number" min="35" max="150" class="form-control" id="berat_badan" aria-describedby="form_data">
                             </div>
                         </div>
                     </div>
@@ -106,13 +107,13 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="nama_ibu_kandung">Nama Ibu Kandung</label>
-                                <input type="text" class="form-control" id="nama_ibu_kandung" aria-describedby="form_data">
+                                <input name="nama_ibu_kandung" type="text" class="form-control" id="nama_ibu_kandung" aria-describedby="form_data">
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
                                 <label for="nama_ayah">Nama Ayah</label>
-                                <input type="text" class="form-control" id="nama_ayah" aria-describedby="form_data">
+                                <input name="nama_ayah_kandung" type="text" class="form-control" id="nama_ayah" aria-describedby="form_data">
                             </div>
                         </div>
                     </div>
@@ -122,39 +123,39 @@
                     <hr>
                     <div class="form-group">
                         <label for="kota">Kota</label>
-                        <input type="text" class="form-control" id="kota" aria-describedby="form_data">
+                        <input name="kota" type="text" class="form-control" id="kota" aria-describedby="form_data">
                     </div>
                     <div class="form-group">
                         <label for="kecamatan">Kecamatan</label>
-                        <input type="text" class="form-control" id="kecamatan" aria-describedby="form_data">
+                        <input name="kecamatan" type="text" class="form-control" id="kecamatan" aria-describedby="form_data">
                     </div>
                     <div class="form-group">
                         <label for="alamat">Alamat</label>
-                        <textarea type="text" class="form-control" id="alamat" aria-describedby="form_data"></textarea>
+                        <textarea name="alamat" type="text" class="form-control" id="alamat" aria-describedby="form_data"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="kode_pos">Kode Pos</label>
-                        <input type="number" class="form-control" id="kode_pos" aria-describedby="form_data">
+                        <input name="kodepos" type="number" class="form-control" id="kode_pos" aria-describedby="form_data">
                     </div>
 
                     <h5>Data Pendidikan</h5>
                     <hr>
                     <div class="form-group">
                         <label for="pendidikan_terakhir">Pendidikan Terakhir</label>
-                        <select id="pendidikan_terakhir" class="custom-select">
-                            <option selected>Pilih salah satu</option>
+                        <select name="pendidikan_terakhir" id="pendidikan_terakhir" class="custom-select">
+                            <option disabled selected>Pilih salah satu</option>
                             <option value="SMA/IPA">SMA/IPA</option>
                             <option value="SMA/IPS">SMA/IPS</option>
                             <option value="SMK">SMK</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="asal_sekolah">Asal Sekolah</label>
-                        <textarea type="text" class="form-control" id="asal_sekolah" aria-describedby="form_data"></textarea>
+                        <label for="sekolah_asal">Asal Sekolah</label>
+                        <textarea name="sekolah_asal" type="text" class="form-control" id="sekolah_asal" aria-describedby="form_data"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="nem">Rata - Rata NEM UN</label>
-                        <input type="number" class="form-control" id="nem" aria-describedby="form_data">
+                        <input name="rata_nem" type="number" class="form-control" id="nem" aria-describedby="form_data">
                     </div>
                 </div>
             </div>
@@ -170,7 +171,7 @@
                         </div>
 
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="pasFotoUploader">
+                            <input name="foto_file" type="file" class="custom-file-input" id="pasFotoUploader">
                             <label class="custom-file-label" for="pas_foto">Upload Scan Pas Foto 3 x 4</label>
                         </div>
                     </div>
@@ -181,7 +182,7 @@
                             <img id="ijazahPreview" class="img-fluid rounded" src="{{ asset('/img/document.png') }}" alt="Ijazah">
                         </div>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="ijazahUploader">
+                            <input name="ijazah_file" type="file" class="custom-file-input" id="ijazahUploader">
                             <label id="labelIjazah" class="custom-file-label" for="ijazahUploader">Upload Scan Ijazah Legalisir</label>
                         </div>
                     </div>
@@ -192,8 +193,8 @@
                             <img id="kesehatanPreview" class="img-fluid rounded" src="{{ asset('/img/document.png') }}" alt="kesehatan">
                         </div>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="kesehatanUploader">
-                            <label id="labelkesehatan" class="custom-file-label" for="kesehatanUploader">Upload Scan test kesehatan</label>
+                            <input name="test_kesehatan_file" type="file" class="custom-file-input" id="kesehatanUploader">
+                            <label id="labelKesehatan" class="custom-file-label" for="kesehatanUploader">Upload Scan test kesehatan</label>
                         </div>
                     </div>
                 </div>
@@ -201,8 +202,11 @@
                     // mengambil element html dengan id
                     var foto = document.getElementById("pasFotoUploader")
                     var ijazah = document.getElementById("ijazahUploader")
+                    var kesehatan = document.getElementById("kesehatanUploader")
+
                     var fotoPreview = document.getElementById("fotoPreview")
                     var ijazahPreview = document.getElementById("labelIjazah")
+                    var kesehatanPreview = document.getElementById("labelKesehatan")
 
                     // membuat event onchange
                     foto.onchange = function(evt) {
@@ -222,21 +226,36 @@
                         let name = evt.target.files[0].name
                         ijazahPreview.innerHTML = name
                     }
+
+                    kesehatan.onchange = function(evt) {
+                        let name = evt.target.files[0].name
+                        kesehatanPreview.innerHTML = name
+                    }
                 </script>
             </div>
             <div class="row mt-3">
                 <div class="col-md-6">
                     <label for="password">Password</label>
-                    <input type="password" name="" id="password" class="form-control">
+                    <input type="password" name="password" id="password" class="form-control">
                 </div>
                 <div class="col-md-6">
                     <label for="confirm_password">Konfirmasi password</label>
-                    <input type="password" name="" id="confirm_password" class="form-control">
+                    <input type="password" name="confirm_password" id="confirm_password" class="form-control">
                 </div>
             </div>
             <div class="my-5 d-block">
                 <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="auth">
+                    <input onclick="changeValue(this)" name="CBT" type="checkbox" class="custom-control-input" id="auth">
+                    <input name="isCBT" value="0" type="hidden" class="custom-control-input" id="hidden">
+                    <script>
+                        function changeValue(evt) {
+                            if (evt.checked) {
+                                document.getElementById("hidden").value = 1
+                            } else {
+                                document.getElementById("hidden").value = 0
+                            }
+                        }
+                    </script>
                     <label class="custom-control-label" for="auth">Saya Bersedia Mengambil test Online</label>
                 </div>
 
