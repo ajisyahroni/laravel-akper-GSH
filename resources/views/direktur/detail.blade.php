@@ -1,4 +1,4 @@
-@extends('admin.master.master')
+@extends('direktur.master.master')
 
 @section('content')
 <div class="content-wrapper">
@@ -139,7 +139,7 @@
                 </table>
                 <div align="right" class="mt-4">
                   <hr>
-                  <a href="/admin/view/dashboard"><button class="btn btn-primary">Kembali</button></a>
+                  <a href="/direktur/view/dashboard"><button class="btn btn-primary">Kembali</button></a>
 
                 </div>
               </div>

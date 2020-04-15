@@ -20,8 +20,15 @@ class SoalController extends Controller
      */
     public function index()
     {
-        $soal = Soal::all();
-        return response()->json($soal);
+        $soal = Soal::paginate(10);
+        $options = [
+            'option_1',
+            'option_2',
+            'option_3',
+            'option_4',
+            'option_5',
+        ];
+        return view('admin/soal_admin', ['soals' => $soal, 'options' => $options]);
     }
     public function indexRandom()
     {
@@ -78,7 +85,7 @@ class SoalController extends Controller
             return $error;
         }
         Soal::create($request->all());
-        return response()->json(['msg' => 'soal created'], 200);
+        return redirect('/admin/view/soal');
     }
 
     /**
@@ -132,7 +139,7 @@ class SoalController extends Controller
         $singleSoal->option_5 = $request->option_5 ? $request->option_5 : $singleSoal->option_5;
         $singleSoal->jawaban = $request->jawaban ? $request->jawaban : $singleSoal->jawaban;
         $singleSoal->update();
-        return response()->json(['msg' => 'updated']);
+        return redirect('/admin/view/soal');
     }
 
     /**
@@ -145,6 +152,6 @@ class SoalController extends Controller
     {
         $singleSoal = Soal::where('id', $id);
         $singleSoal->delete();
-        return response()->json(['msg' => 'deleted']);
+        return redirect('/admin/view/soal');
     }
 }

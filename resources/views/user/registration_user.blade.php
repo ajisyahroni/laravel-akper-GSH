@@ -186,6 +186,17 @@
                         </div>
                     </div>
                 </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="text-center mx-auto my-3">
+                            <img id="kesehatanPreview" class="img-fluid rounded" src="{{ asset('/img/document.png') }}" alt="kesehatan">
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="kesehatanUploader">
+                            <label id="labelkesehatan" class="custom-file-label" for="kesehatanUploader">Upload Scan test kesehatan</label>
+                        </div>
+                    </div>
+                </div>
                 <script>
                     // mengambil element html dengan id
                     var foto = document.getElementById("pasFotoUploader")

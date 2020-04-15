@@ -34,7 +34,7 @@ class CreateSoalsTable extends Migration
                 $table->timestamps();
             }
             
-            $table->SoftDeletes;
+            $table->SoftDeletes();
         });
     }
 

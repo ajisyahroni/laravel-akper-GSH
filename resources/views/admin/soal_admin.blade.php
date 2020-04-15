@@ -40,235 +40,124 @@
           <!-- /.card-header -->
           <div class="card-body">
             <div class="container">
-              <div class="row">
-                <div class="col-10 ">
-                  <h5>1. Apakah Yang di maksud dengan ?</h5>
-                </div>
-                <div class="col-1-sm mr-2 ml-5 ">
-                  <div style="color: #17a2b8; cursor:pointer;">
-                    <i class="fas fa-edit" data-toggle="modal" data-target="#editsoal">
-                      edit
-                    </i>
+              @foreach($soals as $key => $soal)
+              <div>
+                <div class="row">
+                  <!-- SOAL -->
+                  <div class="col-10">
+                    <h5>{{ $soal->id }}. {{ $soal->pertanyaan}} ?</h5>
                   </div>
-
-
-                </div>
-                <div class="col-1-sm ">
-                  <div style="color: #DC3544;cursor:pointer;">
-                    <i class="fas fa-trash">
-                      hapus
-                    </i>
+                  <!-- AKSI -->
+                  <div class="col-2 justify-content-end">
+                    <span class="mx-2" data-toggle="tooltip" data-placement="bottom" title="Edit"><i style="color: #17a2b8; cursor:pointer;" class="fas fa-edit" data-toggle="modal" data-target="#editsoal-{{ $soal->id }}"></i></span>
+                    <span data-toggle="tooltip" data-placement="bottom" title="Hapus">
+                      <a href="{{ url('api/soal/delete/id=') }}{{$soal->id}}" onclick="return confirm('Are you sure?')">
+                        <i style="color: #DC3544;cursor:pointer;" class="fas fa-trash"></i>
+                      </a>
+                    </span>
                   </div>
                 </div>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                <label class="form-check-label" for="exampleRadios1">
-                  ... adalah
-                </label>
-              </div>
-              <div class="form-check mt-3">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                <label class="form-check-label" for="exampleRadios2">
-                  ... adalah
-                </label>
-              </div>
-              <div class="form-check mt-3 ">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                <label class="form-check-label" for="exampleRadios2">
-                  ... adalah
-                </label>
-              </div>
-              <div class="form-check mt-3 ">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                <label class="form-check-label" for="exampleRadios2">
-                  ... adalah
-                </label>
-              </div>
-              <div class="form-check mt-3 ">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                <label class="form-check-label" for="exampleRadios2">
-                  ... adalah
-                </label>
-              </div>
-            </div>
-            <div class="mt-4">
-              <hr>
-            </div>
-
-            <div class="row">
-              <div class="col-9">
-              </div>
-              <div class="col-3-sm">
-                <div>
-                  <nav aria-label="">
-                    <ul class="pagination">
-                      <li class="page-item ">
-                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item active" aria-current="page">
-                        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                      </li>
-                    </ul>
-                  </nav>
-                </div>
-              </div>
-            </div>
-
-            <!-- Modal -->
-            <div class="modal fade bd-example-modal-lg" id="tambahsoal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Soal</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
+                <!-- JAWABAN -->
+                <div class="row">
+                  <div class="col-12">
+                    <ol type="a">
+                      <li>{{ $soal->option_1 }}</li>
+                      <li>{{ $soal->option_2 }}</li>
+                      <li>{{ $soal->option_3 }}</li>
+                      <li>{{ $soal->option_4 }}</li>
+                      <li>{{ $soal->option_5 }}</li>
+                    </ol>
                   </div>
-                  <div class="modal-body">
-                    <form>
-                      <div class="form-group">
-                        <textarea class="form-control" placeholder="Masukan Pertanyaan di sini" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        <div class="row mt-5 ">
-                          <div class="col-1 ml--300">
-                            <input type="radio" id="a" name="a" value="male">
-                          </div>
-                          <div class="col-4 mr-5 ">
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="tuliskan jawaban opsi 1" aria-describedby="emailHelp">
-                          </div>
-                          <div class="col-1">
-                            <input type="radio" id="d" name="d" value="male">
-                          </div>
-                          <div class="col-4">
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="tuliskan jawaban opsi 4" aria-describedby="emailHelp">
-                          </div>
-                        </div>
-                        <div class="row mt-2 ">
-                          <div class="col-1 ml--300">
-                            <input type="radio" id="b" name="b" value="male">
-                          </div>
-                          <div class="col-4 mr-5 ">
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="tuliskan jawaban opsi 2" aria-describedby="emailHelp">
-                          </div>
-                          <div class="col-1 ml--300">
-                            <input type="radio" id="e" name="e" value="male">
-                          </div>
-                          <div class="col-4">
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="tuliskan jawaban opsi 5" aria-describedby="emailHelp">
-                          </div>
-                        </div>
-                        <div class="row mt-2 ">
-                          <div class="col-1 ml--300">
-                            <input type="radio" id="c" name="c" value="male">
-                          </div>
-                          <div class="col-4">
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="tuliskan jawaban opsi 3" aria-describedby="emailHelp">
-                          </div>
-                        </div>
-                        <div class="form-group mt-5">
-                          <label for="exampleFormControlSelect1">Jawaban yang benar</label>
-                          <select class="form-control" id="exampleFormControlSelect1">
-                            <option>a</option>
-                            <option>b</option>
-                            <option>c</option>
-                            <option>d</option>
-                            <option>e</option>
-                          </select>
-                        </div>
-                      </div>
-                    </form>
-                    <div>
-                      <button type="button" class="btn btn-info btn-block">Tambah</button>
+                </div>
+                <span>jawaban :<strong>{{ $soal->jawaban }}</strong></span>
+                <hr>
+              </div>
+
+              <!-- Modal UPDATE -->
+              <div class="modal fade bd-example-modal-lg" id="editsoal-{{ $soal->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Edit Soal</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
                     </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Modal -->
-            <div class="modal fade bd-example-modal-lg" id="editsoal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Soal</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <form>
-                      <div class="form-group">
-                        <textarea class="form-control" placeholder="Masukan Pertanyaan di sini" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        <div class="row mt-5 ">
-                          <div class="col-1 ml--300">
-                            <input type="radio" id="a" name="a" value="male">
-                          </div>
-                          <div class="col-4 mr-5 ">
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="tuliskan jawaban opsi 1" aria-describedby="emailHelp">
-                          </div>
-                          <div class="col-1">
-                            <input type="radio" id="d" name="d" value="male">
-                          </div>
-                          <div class="col-4">
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="tuliskan jawaban opsi 4" aria-describedby="emailHelp">
-                          </div>
+                    <div class="modal-body">
+                      <form action="{{ url('/api/soal/update/id=') }}{{$soal->id}}" method="POST" class="row">
+                        {{ csrf_field() }}
+                        <textarea name="pertanyaan" class="form-control" id="" cols="30" placeholder="Masukkan pertanyaan disini" rows="5">{{ $soal->pertanyaan }}</textarea>
+                        <div class="col-6">
+                          <input value="{{ $soal->option_1 }}" class="form-control my-1" type="text" placeholder="Jawaban opsi a " name="option_1" id="option_1">
+                          <input value="{{ $soal->option_2 }}" class="form-control my-1" type="text" placeholder="Jawaban opsi b " name="option_2" id="option_2">
+                          <input value="{{ $soal->option_3 }}" class="form-control my-1" type="text" placeholder="Jawaban opsi c " name="option_3" id="option_3">
                         </div>
-                        <div class="row mt-2 ">
-                          <div class="col-1 ml--300">
-                            <input type="radio" id="b" name="b" value="male">
-                          </div>
-                          <div class="col-4 mr-5 ">
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="tuliskan jawaban opsi 2" aria-describedby="emailHelp">
-                          </div>
-                          <div class="col-1 ml--300">
-                            <input type="radio" id="e" name="e" value="male">
-                          </div>
-                          <div class="col-4">
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="tuliskan jawaban opsi 5" aria-describedby="emailHelp">
-                          </div>
+                        <div class="col-6">
+                          <input value="{{ $soal->option_4 }}" class="form-control my-1" type="text" placeholder="Jawaban opsi d " name="option_4" id="option_4">
+                          <input value="{{ $soal->option_5 }}" class="form-control my-1" type="text" placeholder="Jawaban opsi e " name="option_5" id="option_5">
                         </div>
-                        <div class="row mt-2 ">
-                          <div class="col-1 ml--300">
-                            <input type="radio" id="c" name="c" value="male">
-                          </div>
-                          <div class="col-4">
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="tuliskan jawaban opsi 3" aria-describedby="emailHelp">
-                          </div>
-                        </div>
-                        <div class="form-group mt-5">
-                          <label for="exampleFormControlSelect1">Jawaban yang benar</label>
-                          <select class="form-control" id="exampleFormControlSelect1">
-                            <option>a</option>
-                            <option>b</option>
-                            <option>c</option>
-                            <option>d</option>
-                            <option>e</option>
-                          </select>
-                        </div>
-                      </div>
-                    </form>
-                    <div>
-                      <button type="button" class="btn btn-primary">Tambah</button>
+                        <select name="jawaban" id="jawaban" class="form-control">
+                          <option {{ ("option_1" == $soal->jawaban ) ? 'selected' : '' }} value="option_1">opsi a</option>
+                          <option {{ ("option_2" == $soal->jawaban ) ? 'selected' : '' }} value="option_2">opsi b</option>
+                          <option {{ ("option_3" == $soal->jawaban ) ? 'selected' : '' }} value="option_3">opsi c</option>
+                          <option {{ ("option_4" == $soal->jawaban ) ? 'selected' : '' }} value="option_4">opsi d</option>
+                          <option {{ ("option_5" == $soal->jawaban ) ? 'selected' : '' }} value="option_5">opsi e</option>
+                        </select>
+                        <button type="submit" class="btn btn-info btn-block mt-3">UPDATE</button>
+                      </form>
                     </div>
-
                   </div>
                 </div>
               </div>
-            </div>
+              @endforeach
+              <!-- PAGINATION HERE -->
+              {{$soals}}
 
+              <!-- Modal TAMBAH DATA-->
+              <div class="modal fade bd-example-modal-lg" id="tambahsoal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Tambah Soal</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form action="{{ url('/api/soal/create') }}" method="POST" class="row">
+                        {{ csrf_field() }}
+                        <textarea name="pertanyaan" class="form-control" id="" cols="30" placeholder="Masukkan pertanyaan disini" rows="5"></textarea>
+                        <div class="col-6">
+                          <input class="form-control my-1" type="text" placeholder="Jawaban opsi a " name="option_1" id="option_1">
+                          <input class="form-control my-1" type="text" placeholder="Jawaban opsi b " name="option_2" id="option_2">
+                          <input class="form-control my-1" type="text" placeholder="Jawaban opsi c " name="option_3" id="option_3">
+                        </div>
+                        <div class="col-6">
+                          <input class="form-control my-1" type="text" placeholder="Jawaban opsi d " name="option_4" id="option_4">
+                          <input class="form-control my-1" type="text" placeholder="Jawaban opsi e " name="option_5" id="option_5">
+                        </div>
+                        <select name="jawaban" id="jawaban" class="form-control">
+                          <option value="option_1">opsi a</option>
+                          <option value="option_2">opsi b</option>
+                          <option value="option_3">opsi c</option>
+                          <option value="option_4">opsi d</option>
+                          <option value="option_5">opsi e</option>
+                        </select>
+                        <button type="submit" class="btn btn-info btn-block mt-3">Tambah</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <!-- /.card-body -->
           </div>
-          <!-- /.card-body -->
+          <!-- /.card -->
         </div>
-        <!-- /.card -->
+        <!-- /.col -->
       </div>
-      <!-- /.col -->
-    </div>
-    <!-- /.row -->
+      <!-- /.row -->
   </section>
   <!-- /.content -->
 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class DirekturController extends Controller
 {
@@ -11,9 +12,18 @@ class DirekturController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function dashboard()
     {
+        $user = User::all();
+        return view('direktur/dashboard_direktur', ['users' => $user]);
         //
+    }
+    public function indexById($id)
+    {
+
+        $user = User::where('id', $id)->first();
+        return view('direktur/detail', ['user' => $user]);
+        // return response()->json($user);
     }
 
     /**

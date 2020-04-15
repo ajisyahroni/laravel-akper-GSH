@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
@@ -21,13 +22,16 @@ class UserController extends Controller
     public function index(Request $req)
     {
         $user = User::all();
-        return response()->json($user);
+        // return response()->json($user);
+        return view('admin/dashboard_admin', ['users' => $user]);
     }
 
     public function indexById($id)
     {
+
         $user = User::where('id', $id)->first();
-        return response()->json($user);
+        return view('admin/detail', ['user' => $user]);
+        // return response()->json($user);
     }
 
     private function pin_generator()
@@ -48,7 +52,7 @@ class UserController extends Controller
         return $get_rand_string;
     }
 
-    public function activateUser(Request $req, $id)
+    public function uploadTransfer(Request $req, $id)
     {
         // password
         // $noencrypt_pass = $this->pin_generator();
@@ -60,11 +64,28 @@ class UserController extends Controller
         // update user password
         $singleUser = User::where('id', $id)->first();
         // $singleUser->password = bcrypt($noencrypt_pass);
-        $singleUser->hasActivated = Carbon::now()->toDateTimeString();
         $singleUser->tf_url = $bukti_tf_url;
         $singleUser->save();
 
         return response()->json($singleUser);
+    }
+    public function activateUser($id)
+    {
+        $singleUser = User::where('id', $id)->first();
+        $singleUser->hasActivated = 1;
+        $singleUser->save();
+        return response()->json([
+            'msg' => 'berhasil aktivasi'
+        ], 200);
+    }
+    public function rejectUser($id)
+    {
+        $singleUser = User::where('id', $id)->first();
+        $singleUser->hasActivated = 0;
+        $singleUser->save();
+        return response()->json([
+            'msg' => 'berhasil menolah user'
+        ], 200);
     }
 
     /**

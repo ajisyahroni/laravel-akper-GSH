@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->string('agama');
+            $table->string('gender');
             $table->string('kewarganegaraan');
             $table->string('telepon');
             $table->string('nama_ibu_kandung');
@@ -35,6 +36,7 @@ class CreateUsersTable extends Migration
             $table->string('foto_url');
             $table->string('ijazah_url');
             $table->string('tf_url')->nullable();
+            $table->string('test_kesehatan_url')->nullable();
 
             // ALAMAT FIELD
             $table->string('kota');
@@ -45,15 +47,16 @@ class CreateUsersTable extends Migration
 
             // STUDY FASE
             $table->string('pendidikan_terakhir');
+            $table->string('sekolah_asal');
             $table->float('rata_nem');
 
 
             // FOR STATUS
             $table->boolean('isCBT')->nullable();
-            $table->date('hasActivated')->nullable();
+            $table->boolean('hasActivated')->nullable();
             $table->date('hasTested')->nullable();
             $table->float('score')->nullable();
-            $table->boolean('isPass')->nullable();
+            // $table->boolean('isPass')->nullable();
 
 
 

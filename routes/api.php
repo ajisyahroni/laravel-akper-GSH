@@ -20,11 +20,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 // USER ROUTE
-Route::group(['prefix' => 'user'], function () {
-    Route::get('/all', 'UserController@index');
-    Route::get('/id={id}', 'UserController@indexById');
-    Route::post('/create', 'UserController@createUser');
-    Route::post('/activate/id={id}', 'UserController@activateUser');
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/show-user/all', 'UserController@index');
+    Route::get('/show-user/id={id}', 'UserController@indexById');
+    Route::post('/create-user', 'UserController@createUser');
+    Route::get('/activate-user/id={id}', 'UserController@activateUser');
+    Route::get('/reject-user/id={id}', 'UserController@rejectUser');
 });
 
 // SOAL ROUTE
@@ -32,8 +33,8 @@ Route::group(['prefix' => 'soal'], function () {
     Route::get('/all', 'SoalController@indexRandom');
     Route::post('/create', 'SoalController@create');
     Route::post('/koreksi', 'SoalController@correct');
-    Route::put('/update/id={id}', 'SoalController@update');
-    Route::delete('/delete/id={id}', 'SoalController@destroy');
+    Route::post('/update/id={id}', 'SoalController@update');
+    Route::get('/delete/id={id}', 'SoalController@destroy');
 });
 // FORCES HTTPS SCHEMA
 if (App::environment('production')) {

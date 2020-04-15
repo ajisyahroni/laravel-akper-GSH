@@ -40,51 +40,93 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach($users as $user)
                 <tr>
-                  <td>Adi Yoga Prakasa</td>
-                  <td>SMAN 1
+                  <td>{{ $user->nama }}</td>
+                  <td>{{ $user->sekolah_asal }}</td>
+                  <td>{{ $user->alamat }}, {{ $user->kota }}</td>
+                  <td>
+                    @if ($user->hasActivated == 1)
+                    aktif
+                    @elseif (!isset($user->hasActivated))
+                    belum
+                    @else
+                    ditolak
+                    @endif
+
+                    @if (isset($user->hasTested))
+                    Sudah Test
+                    @endif
+
                   </td>
-                  <td>Yogyakarta</td>
-                  <td> belum aktivasi</td>
                   <td class="text-center">
+                    @if (!isset($user->hasActivated))
                     <span data-toggle="tooltip" data-placement="top" title="Cek Pendaftar">
-                      <i style="color: #28a745; cursor:pointer;" class="fas fa-check-circle mr-4" data-toggle="modal" data-target="#cekbelum"></i>
+                      <i style="color: #28a745; cursor:pointer;" class="fas fa-check-circle mr-4" data-toggle="modal" data-target="#cekbelum-{{ $user->id}}"></i>
                     </span>
+                    @else
+                    <span data-toggle="tooltip" data-placement="top" title="Sudah aktivasi">
+                      <i style="color: #6c757d; cursor:not-allowed;" class="fas fa-check-circle mr-4"></i>
+                    </span>
+                    @endif
+
 
                     <span data-toggle="tooltip" data-placement="top" title="Lihat Detail">
-                      <a href="/admin/view/detail"><i style="color: #17a2b8" class="fas fa-id-card"></i></a>
+                      <a href="/admin/view/detail/id={{ $user->id }}"><i style="color: #17a2b8" class="fas fa-id-card"></i></a>
                     </span>
                   </td>
                 </tr>
-              </tbody>
-            </table>
-            <div class="modal fade" id="cekbelum" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Belum Aktifasi</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <p>Bukti TF oleh Aji Syahroni:</p>
-                    <div class="text-center"> <img class="img-fluid" src="../../img/photo2.png" alt=""> </div>
-                  </div>
-                  <div class="modal-footer">
-                    <div class="row">
-                      <div class="col">
-                        <button type="button" class="btn btn-danger">tolak</button>
+                <div class="modal fade" id="cekbelum-{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Belum Aktifasi</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
                       </div>
-                      <div class="col">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ceksudah" data-dismiss="modal">acc</button>
+                      <div class="modal-body">
+                        <p>Bukti TF oleh {{ $user->nama }}:</p>
+                        <div class="text-center"> <img class="img-fluid" src="{{ url($user->tf_url) }}" alt=""> </div>
+                      </div>
+                      <div class="modal-footer">
+                        <div class="row">
+                          <div class="col">
+                            <button type="button" onclick="rejectUser({{$user->id}})" class="btn btn-danger">tolak</button>
+                          </div>
+                          <div class="col">
+                            <button type="button" onclick="activateUser({{$user->id}})" class="btn btn-success">ACC</button>
+                            <script>
+                              function rejectUser(id) {
+                                fetch('{{ url("api/admin/reject-user/id=") }}' + id).then(res => {
+                                  if (res.ok) {
+                                    location.reload()
+                                  } else {
+                                    alert("gagal melakukan penolakan")
+                                  }
+                                })
+                              }
+
+                              function activateUser(id) {
+                                fetch('{{ url("api/admin/activate-user/id=") }}' + id).then(res => {
+                                  if (res.ok) {
+                                    location.reload()
+                                  } else {
+                                    alert("gagal melakukan aktivasi")
+                                  }
+                                })
+                              }
+                            </script>
+                          </div>
+                        </div>
+
                       </div>
                     </div>
-
                   </div>
                 </div>
-              </div>
-            </div>
+                @endforeach
+              </tbody>
+            </table>
             <div class="modal fade" id="ceksudah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
