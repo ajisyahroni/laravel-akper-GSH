@@ -42,15 +42,14 @@
     <div class="d-flex flex-column">
 
       <div class="profile">
-        <img src="{{url($user->foto_url)}}" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">{{ $user->nama }}</a></h1>
+        <img src="{{url(Auth::user()->foto_url)}}" alt="" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="#">{{ Auth::user()->nama }}</a></h1>
       </div>
 
       <nav class="nav-menu">
         <ul>
           <li><a href=""><i class="bx bx-user"></i> <span>Dashdoard</span></a></li>
           <li><a href="/"><i class="bx bx-log-out"></i> <span>Keluar</span></a></li>
-
         </ul>
       </nav><!-- .nav-menu -->
       <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
@@ -66,38 +65,43 @@
             <h3>Tahapan</h3>
             <form action="">
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="tahap_1" disabled>
-                <label class="custom-control-label" for="tahap_1"><del>Regestrasi</del></label>
+                <input checked type="checkbox" class="custom-control-input" id="tahap_1" disabled>
+                <label class="custom-control-label" for="tahap_1">Registrasi</label>
               </div>
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="tahap_2" disabled>
-                <label class="custom-control-label" for="tahap_2"><a href="#" data-toggle="modal" data-target="#upload_bukti_tf">Aktivasi akun dengan upload bukti tranfer</a></label>
+                <input {{ (Auth::user()->hasActivated == 1) ? 'checked' : '' }} type="checkbox" class="custom-control-input" id="tahap_2" disabled>
+                <label class="custom-control-label" for="tahap_2">Aktivasi akun dengan upload bukti tranfer</label>
               </div>
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="tahap_3" disabled>
-                <label class="custom-control-label" for="tahap_3"><a class="text-muted" href="test">Ambil test</a></label>
+                <input {{ (isset(Auth::user()->hasTested)) ? 'checked' : '' }} type="checkbox" class="custom-control-input" id="tahap_3" disabled>
+                <label class="custom-control-label" for="tahap_3">Ambil test</label>
               </div>
               <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="tahap_4" disabled>
-                <label class="custom-control-label" for="tahap_4">Selsai</label>
+                <input {{ (isset(Auth::user()->hasTested) &&  Auth::user()->hasActivated == 1 ) ? 'checked' : '' }} type="checkbox" class="custom-control-input" id="tahap_4" disabled>
+                <label class="custom-control-label" for="tahap_4">Selesai</label>
               </div>
             </form>
-          </div>
 
-          <div class="container bg-light my-3 py-4 shadow-sm" data-aos="fade-left">
-            <div class="row">
-              <div class="col-md-6">
-                <img src="{{asset('img/activate_user.png')}}" class="img-thumbnail img-fluid w-75 mx-5 my-3" alt="foto"><br>
-                @if($user->hasActivated == 0)
-                <button class="btn btn-info btn-block" data-toggle="modal" data-target="#upload_bukti_tf">Aktivasi Akun</button>
-                @elseif($user->hasActivated == 1)
-                <div class="alert alert-success" role="alert">Akun anda sudah aktif</div>
-                @endif
+            <div class="container bg-light my-3 py-4 shadow-sm" data-aos="fade-left">
+              @if(Auth::user()->hasActivated == 1)
+              <div class="alert alert-success" role="alert">Akun anda sudah aktif, silahkan mengambil test</div>
+              @endif
+              <div class="row">
 
-              </div>
-              <div class="col-md-6">
-                <img src="{{asset('img/test.png')}}" class="img-thumbnail img-fluid w-75 mx-5 my-3" alt="foto"><br>
-                <a class="btn btn-info btn-block text-white" href="/user/view/test">Ambil Test</a>
+                <div class="col-md-6">
+                  <img src="{{asset('img/activate_user.png')}}" class="img-thumbnail img-fluid w-75 mx-5 my-3" alt="foto"><br>
+                  @if(Auth::user()->hasActivated == 0)
+                  <button class="btn btn-info btn-block" data-toggle="modal" data-target="#upload_bukti_tf">Aktivasi Akun</button>
+                  @else
+                  <button class="btn btn-secondary btn-block" disabled style="cursor: not-allowed">Sudah aktif</button>
+                  @endif
+
+
+                </div>
+                <div class="col-md-6">
+                  <img src="{{asset('img/test.png')}}" class="img-thumbnail img-fluid w-75 mx-5 my-3" alt="foto"><br>
+                  <a class="btn btn-info btn-block text-white" href="{{ route('test.user') }} ">Ambil Test</a>
+                </div>
               </div>
             </div>
           </div>
@@ -105,6 +109,9 @@
       </div>
     </section><!-- End About Section -->
   </main><!-- End #main -->
+
+
+
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
@@ -140,7 +147,8 @@
           </button>
         </div>
         <div class="modal-body">
-          <form action="{{ url('api/user/upload/tf') }}" method="POST" enctype="multipart/form-data">
+          <form action="{{ route('upload.tf') }}" method="POST" enctype="multipart/form-data">
+            {{ csrf_field() }}
             <div class="text-center mx-auto">
               <input type="hidden" name="user_id">
               <img id="previewTF" src="{{ asset('img/upload.png') }}" class="img-fluid rounded" alt="Foto bukti TF">

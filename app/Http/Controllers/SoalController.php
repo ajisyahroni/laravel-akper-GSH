@@ -11,35 +11,21 @@ use Illuminate\Validation\Rule;
 class SoalController extends Controller
 {
     // PROPERTY 
-    public $totalQuestion = 100;
+    public $totalQuestion = 10;
     public $pointPerQuestion = 1;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $soal = Soal::paginate(10);
-        $options = [
-            'option_1',
-            'option_2',
-            'option_3',
-            'option_4',
-            'option_5',
-        ];
-        return view('admin/soal_admin', ['soals' => $soal, 'options' => $options]);
-    }
+
     public function indexRandom()
     {
         $soal = Soal::all()->random($this->totalQuestion);
         $total = $soal->count();
-        return response()->json([
-            'total_soal' => $total,
-            'soal' => $soal
-        ]);
+        return view('user/test_user', ['soals' => $soal, 'total' => $total]);
     }
-    public function correct(Request $request)
+    public function koreksi(Request $request)
     {
         $score = 0;
 

@@ -72,7 +72,7 @@
 
 
                     <span data-toggle="tooltip" data-placement="top" title="Lihat Detail">
-                      <a href="/admin/view/detail/id={{ $user->id }}"><i style="color: #17a2b8" class="fas fa-id-card"></i></a>
+                      <a href="/admin/view/show-user/detail/id={{ $user->id }}"><i style="color: #17a2b8" class="fas fa-id-card"></i></a>
                     </span>
                   </td>
                 </tr>
@@ -87,7 +87,15 @@
                       </div>
                       <div class="modal-body">
                         <p>Bukti TF oleh {{ $user->nama }}:</p>
+                        @if(isset($user->tf_url))
                         <div class="text-center"> <img class="img-fluid" src="{{ url($user->tf_url) }}" alt=""> </div>
+                        @else
+                        <div class="text-center">
+                          <img class="img-fluid" src="{{ asset('/img/upload.png') }}" alt="">
+                          <br>
+                          <strong>kosong</strong>
+                        </div>
+                        @endif
                       </div>
                       <div class="modal-footer">
                         <div class="row">
@@ -98,7 +106,7 @@
                             <button type="button" onclick="activateUser({{$user->id}})" class="btn btn-success">ACC</button>
                             <script>
                               function rejectUser(id) {
-                                fetch('{{ url("api/admin/reject-user/id=") }}' + id).then(res => {
+                                fetch('{{ url("/admin/action/user/reject-user/id=") }}' + id).then(res => {
                                   if (res.ok) {
                                     location.reload()
                                   } else {
@@ -108,7 +116,7 @@
                               }
 
                               function activateUser(id) {
-                                fetch('{{ url("api/admin/activate-user/id=") }}' + id).then(res => {
+                                fetch('{{ url("/admin/action/user/activate-user/id=") }}' + id).then(res => {
                                   if (res.ok) {
                                     location.reload()
                                   } else {

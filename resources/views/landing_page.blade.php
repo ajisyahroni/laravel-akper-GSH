@@ -125,8 +125,8 @@
             </p>
           </div>
           <div class="col-lg-4 pt-4 pt-lg-0 content">
-            <a href="user/view/registration" class="btn btn-danger float-lg-right my-lg-3 py-2" style="padding:0 50px 0 50px;">Registrasi</a>
-            <a href="user/view/login" class="btn btn-danger float-lg-right py-2" style="padding:0 67px 0 67px;">Login</a>
+            <a href="{{ route('registration.view') }}" class="btn btn-danger float-lg-right my-lg-3 py-2" style="padding:0 50px 0 50px;">Registrasi</a>
+            <a href="{{ route('login.view') }}" class="btn btn-danger float-lg-right py-2" style="padding:0 67px 0 67px;">Login</a>
           </div>
         </div>
       </div>
@@ -172,7 +172,7 @@
     <!-- ======= Clients Section ======= -->
     <div class="container">
       <div class="section-title" data-aos="fade-up">
-        <h2 >Biaya Kuliah</h2>
+        <h2>Biaya Kuliah</h2>
       </div>
       <div class="row my-4">
 

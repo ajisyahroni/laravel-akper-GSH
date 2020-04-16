@@ -18,40 +18,62 @@ Route::get('/', function () {
 });
 
 // ADMIN GROUP
-Route::group(['prefix' => 'admin/view'], function () {
-    Route::get('/login', function () {
-        return view('admin/login_admin');
+Route::group(['prefix' => 'admin'], function () {
+
+    // VIEW 
+    Route::group(['prefix' => 'view'], function () {
+        Route::get('/login', 'AdminController@login');
+        Route::get('/dashboard', 'AdminController@dashboard');
+        Route::get('/show-user/detail/id={id}', 'AdminController@showUserDetail');
+        Route::get('/soal', 'AdminController@showSoal');
     });
-    Route::get('/dashboard', 'UserController@index');
-    Route::get('/detail/id={id}', 'UserController@indexById');
-    Route::get('/soal', 'SoalController@index');
+
+    // ACTION
+    Route::group(['prefix' => 'action'], function () {
+
+        // DASHBOARD DATA USER
+        Route::group(['prefix' => 'user'], function () {
+            Route::get('/activate-user/id={id}', 'AdminController@activateUser')->name('activate.user');
+            Route::get('/reject-user/id={id}', 'AdminController@rejectUser')->name('reject.user');
+        });
+
+        // SOAL
+        Route::group(['prefix' => 'soal'], function () {
+            Route::post('/create', 'SoalController@create')->name('create.soal');
+            Route::post('/update/id={id}', 'SoalController@update')->name('update.soal');
+            Route::get('/delete/id={id}', 'SoalController@destroy')->name('delete.soal');
+        });
+    });
 });
 
 
 // DIREKTUR GROUP
-Route::group(['prefix' => 'direktur/view'], function () {
-    Route::get('/login', function () {
-        return view('direktur/login_direktur');
-    });
-    Route::get('/dashboard', 'DirekturController@dashboard');
-    Route::get('/detail/id={id}', 'DirekturController@indexById');
-});
-
-Route::group(['prefix' => 'user/view'], function () {
-    Route::get('/login', function () {
-        return view('user/login_user');
-    });
-    Route::get('/dashboard', function () {
-        return view('user/dashboard_user');
-    });
-    Route::get('/registration', function () {
-        return view('user/registration_user');
-    });
-    Route::get('/test', function () {
-        return view('user/test_user');
+Route::group(['prefix' => 'direktur'], function () {
+    Route::group(['prefix' => 'view'], function () {
+        Route::get('/login', 'DirekturController@login');
+        Route::get('/dashboard', 'DirekturController@dashboard');
+        Route::get('/show-user/detail/id={id}', 'DirekturController@userById');
     });
 });
 
-Auth::routes();
+
+
+Route::group(['prefix' => 'user'], function () {
+    Route::group(['prefix' => 'view'], function () {
+        Route::get('/login', 'UserController@login_view')->name('login.view');
+        Route::get('/dashboard', 'UserController@dashboard_view')->name('dashboard.view');
+        Route::get('/registration', 'UserController@register_view')->name('registration.view');
+        Route::get('/test', 'SoalController@indexRandom')->name('test.user');
+    });
+
+    Route::group(['prefix' => 'action'], function () {
+        Route::post('/create-user', 'UserController@create')->name('register.user');
+        Route::post('/login-user', 'UserController@login')->name('login.user');
+        Route::post('/upload/tf', 'UserController@uploadTransfer')->name('upload.tf');
+        Route::post('/koreksi/test', 'SoalController@koreksi')->name('koreksi.user');
+    });
+});
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');

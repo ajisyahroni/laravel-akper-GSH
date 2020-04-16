@@ -61,7 +61,7 @@
                   </td>
                   <td class="text-center">
                     <span data-toggle="tooltip" data-placement="top" title="Lihat Detail">
-                      <a href="/direktur/view/detail/id={{ $user->id }}"><i style="color: #17a2b8" class="fas fa-id-card"></i></a>
+                      <a href="/direktur/view/show-user/detail/id={{ $user->id }}"><i style="color: #17a2b8" class="fas fa-id-card"></i></a>
                     </span>
                   </td>
                 </tr>

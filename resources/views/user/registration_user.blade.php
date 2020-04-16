@@ -23,9 +23,7 @@
 
 
     @extends('user/layout/main')
-    <form class="bg-light shadow-sm p-4 rounded" action="/api/admin/create-user" method="POST" enctype="multipart/form-data">
-
-
+    <form class="bg-light shadow-sm p-4 rounded" action="{{ route('register.user') }}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="container">
             <!-- BARIS -->

@@ -21,77 +21,39 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $req)
+
+    public function login_view()
     {
-        $user = User::all();
-        // return response()->json($user);
-        return view('admin/dashboard_admin', ['users' => $user]);
+        return view('user/login_user');
     }
-
-    public function indexById($id)
+    public function dashboard_view()
     {
-
-        $user = User::where('id', $id)->first();
-        return view('admin/detail', ['user' => $user]);
-        // return response()->json($user);
+        return view('user/dashboard_user');
     }
-
-    private function pin_generator()
+    public function register_view()
     {
-        $alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-        $number = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
-        $rand_index_alpha = array_rand($alpha, 2);
-        $rand_index_number = array_rand($number, 2);
-
-        $res_rand_alpha = [$alpha[$rand_index_alpha[0]], $alpha[$rand_index_alpha[1]]];
-        $res_rand_number = [$number[$rand_index_number[0]], $number[$rand_index_number[1]]];
-
-        $merge_res_rand = array_merge($res_rand_alpha, $res_rand_number);
-        shuffle($merge_res_rand);
-
-        $get_rand_string = str_replace(',', '', implode(",", $merge_res_rand));
-
-        return $get_rand_string;
+        return view('user/registration_user');
     }
+    public function test_view()
+    {
+        return view('user/test_user');
+    }
+   
 
     public function uploadTransfer(Request $req)
     {
-        // password
-        // $noencrypt_pass = $this->pin_generator();
-        // GET TRANSFER FILE
-        // $bukti_tf_file = $req->file('file_bukti_transfer');
-        // $bukti_tf_url = "/$this->folderFoto/" . time() . "_" . $bukti_tf_file->getClientOriginalName();
-        // $bukti_tf_file->move($this->folderTransfer, $bukti_tf_url);
+        $bukti_tf_file = $req->file('file_bukti_transfer');
+        $bukti_tf_url = "/$this->folderTransfer/" . time() . "_" . $bukti_tf_file->getClientOriginalName();
+        $bukti_tf_file->move($this->folderTransfer, $bukti_tf_url);
 
-        // update user password
-        $id = Auth::check();
-        dd($id);
-        // $singleUser = User::where('id', $id)->first();
-        // $singleUser->password = bcrypt($noencrypt_pass);
-        // $singleUser->tf_url = $bukti_tf_url;
-        // dd($singleUser);
-        // $singleUser->save();
+        $id = Auth::id();
+        $singleUser = User::where('id', $id)->first();
+        $singleUser->tf_url = $bukti_tf_url;
+        $singleUser->save();
 
-        // return response()->json($singleUser);
+        return redirect()->back();
     }
-    public function activateUser($id)
-    {
-        $singleUser = User::where('id', $id)->first();
-        $singleUser->hasActivated = 1;
-        $singleUser->save();
-        return response()->json([
-            'msg' => 'berhasil aktivasi'
-        ], 200);
-    }
-    public function rejectUser($id)
-    {
-        $singleUser = User::where('id', $id)->first();
-        $singleUser->hasActivated = 0;
-        $singleUser->save();
-        return response()->json([
-            'msg' => 'berhasil menolah user'
-        ], 200);
-    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -102,14 +64,15 @@ class UserController extends Controller
     {
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return view('user/dashboard_user', ['user' => Auth::user()]);
+            // return view('user/dashboard_user', ['user' => Auth::user()]);
+            return redirect()->route('dashboard.view');
         }
     }
     public function logout()
     {
         Auth::logout();
     }
-    public function createUser(Request $req)
+    public function create(Request $req)
     {
         $rules = [
             'nama' => 'required|string',
@@ -176,7 +139,7 @@ class UserController extends Controller
 
         User::create($input);
         // return response()->json(['msg' => 'created'], 200);
-        return view('user/login_user');
+        return redirect()->route('login.view');
     }
 
     /**

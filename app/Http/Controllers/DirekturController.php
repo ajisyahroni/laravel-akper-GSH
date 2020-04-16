@@ -12,13 +12,17 @@ class DirekturController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function login()
+    {
+        return view('direktur/login_direktur');
+    }
     public function dashboard()
     {
         $user = User::all();
         return view('direktur/dashboard_direktur', ['users' => $user]);
         //
     }
-    public function indexById($id)
+    public function userById($id)
     {
 
         $user = User::where('id', $id)->first();

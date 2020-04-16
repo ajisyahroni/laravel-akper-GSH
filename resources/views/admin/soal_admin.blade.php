@@ -51,7 +51,7 @@
                   <div class="col-2 justify-content-end">
                     <span class="mx-2" data-toggle="tooltip" data-placement="bottom" title="Edit"><i style="color: #17a2b8; cursor:pointer;" class="fas fa-edit" data-toggle="modal" data-target="#editsoal-{{ $soal->id }}"></i></span>
                     <span data-toggle="tooltip" data-placement="bottom" title="Hapus">
-                      <a href="{{ url('api/soal/delete/id=') }}{{$soal->id}}" onclick="return confirm('Are you sure?')">
+                      <a href="{{ route('delete.soal', ['id' => $soal->id]) }}" onclick="return confirm('Are you sure?')">
                         <i style="color: #DC3544;cursor:pointer;" class="fas fa-trash"></i>
                       </a>
                     </span>
@@ -84,7 +84,7 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      <form action="{{ url('/api/soal/update/id=') }}{{$soal->id}}" method="POST" class="row">
+                      <form action="{{ route('update.soal',['id'=>$soal->id]) }}" method="POST" class="row">
                         {{ csrf_field() }}
                         <textarea name="pertanyaan" class="form-control" id="" cols="30" placeholder="Masukkan pertanyaan disini" rows="5">{{ $soal->pertanyaan }}</textarea>
                         <div class="col-6">
@@ -124,7 +124,7 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      <form action="{{ url('/api/soal/create') }}" method="POST" class="row">
+                      <form action="{{ route('create.soal') }}" method="POST" class="row">
                         {{ csrf_field() }}
                         <textarea name="pertanyaan" class="form-control" id="" cols="30" placeholder="Masukkan pertanyaan disini" rows="5"></textarea>
                         <div class="col-6">
