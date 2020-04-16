@@ -29,7 +29,3 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 if (App::environment('production')) {
     URL::forceScheme('https');
 }
-
-Route::group(['prefix' => 'user'], function () {
-    Route::post('/koreksi/test', 'SoalController@koreksi')->name('api.koreksi.user');
-});

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Soal;
+use App\User;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 
@@ -39,6 +42,13 @@ class SoalController extends Controller
                 }
             }
         }
+
+        $id = Auth::id();
+        $singleUser = User::where('id', $id)->first();
+        $singleUser->hasTested = Carbon::now();
+        $singleUser->score = $score;
+        $singleUser->save();
+        // return redirect()->route('dashboard.view');
         return response()->json(['msg' => 'berhasil koreksi', 'score' => $score], 200);
     }
 

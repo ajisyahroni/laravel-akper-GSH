@@ -35,8 +35,8 @@
     <form method="POST" class="text-center border border-light p-5" action="{{ route('login.user') }}">
       <p class="h4 mb-4">Login</p>
       {{ csrf_field() }}
-      <input value="suyainah@yahoo.com" required name="email" type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
-      <input value="secret" required name="password" type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+      <input required name="email" type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+      <input required name="password" type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
       <button class="btn btn-danger btn-block my-4" type="submit">Login</button>
 
       <p>Belum Mendaftar?

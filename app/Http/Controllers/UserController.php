@@ -38,7 +38,7 @@ class UserController extends Controller
     {
         return view('user/test_user');
     }
-   
+
 
     public function uploadTransfer(Request $req)
     {
@@ -71,6 +71,7 @@ class UserController extends Controller
     public function logout()
     {
         Auth::logout();
+        return redirect()->route('landing.page');
     }
     public function create(Request $req)
     {

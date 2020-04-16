@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('landing_page');
-});
+})->name('landing.page');
 
 // ADMIN GROUP
 Route::group(['prefix' => 'admin'], function () {
@@ -67,6 +67,7 @@ Route::group(['prefix' => 'user'], function () {
     });
 
     Route::group(['prefix' => 'action'], function () {
+        Route::get('/logout', 'UserController@logout')->name('logout.user');
         Route::post('/create-user', 'UserController@create')->name('register.user');
         Route::post('/login-user', 'UserController@login')->name('login.user');
         Route::post('/upload/tf', 'UserController@uploadTransfer')->name('upload.tf');

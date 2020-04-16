@@ -1,5 +1,5 @@
 @extends('user/layout/main')
-@section('title','Test')
+@section('title','Test Online')
 
 @section('container')
 <div class="container">
@@ -82,16 +82,17 @@
           method: 'POST',
           body: JSON.stringify(arrayOfRequest),
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           }
         }
-        fetch('{{ url("api/user/koreksi/test") }}', opt)
+        fetch('{{ url("user/action/koreksi/test") }}', opt)
           .then(r => {
             if (r.ok) {
-              return r.json()
+              // return r.json()
+              window.location.href = "{{ url('user/view/dashboard') }}"
             }
           })
-          .then(data => console.log(data.score))
       }
 
 

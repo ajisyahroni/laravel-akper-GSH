@@ -48,8 +48,8 @@
 
       <nav class="nav-menu">
         <ul>
-          <li><a href=""><i class="bx bx-user"></i> <span>Dashdoard</span></a></li>
-          <li><a href="/"><i class="bx bx-log-out"></i> <span>Keluar</span></a></li>
+          <li><a href="#"><i class="bx bx-user"></i> <span>Dashdoard</span></a></li>
+          <li><a href="{{ route('logout.user') }}"><i class="bx bx-log-out"></i> <span>Keluar</span></a></li>
         </ul>
       </nav><!-- .nav-menu -->
       <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
@@ -83,8 +83,14 @@
             </form>
 
             <div class="container bg-light my-3 py-4 shadow-sm" data-aos="fade-left">
-              @if(Auth::user()->hasActivated == 1)
-              <div class="alert alert-success" role="alert">Akun anda sudah aktif, silahkan mengambil test</div>
+              @if(Auth::user()->hasActivated == 1 && !isset(Auth::user()->hasTested))
+              <div class="alert alert-info" role="alert">Akun anda sudah aktif, silahkan mengambil test</div>
+              @elseif(Auth::user()->hasActivated == 1 && isset(Auth::user()->hasTested))
+              @if(Auth::user()->score > 8)
+              <div class="alert alert-success" role="alert">Selamat anda lolos test, skor anda {{ Auth::user()->score }}</div>
+              @else
+              <div class="alert alert-danger" role="alert">Mohon maaf anda gagal test, skor anda {{Auth::user()->score}}</div>
+              @endif
               @endif
               <div class="row">
 
@@ -100,7 +106,11 @@
                 </div>
                 <div class="col-md-6">
                   <img src="{{asset('img/test.png')}}" class="img-thumbnail img-fluid w-75 mx-5 my-3" alt="foto"><br>
+                  @if(Auth::user()->hasActivated == 1 && isset(Auth::user()->hasTested))
+                  <button disabled style="cursor: not-allowed" class="btn btn-secondary btn-block text-white">Sudah test</button>
+                  @else
                   <a class="btn btn-info btn-block text-white" href="{{ route('test.user') }} ">Ambil Test</a>
+                  @endif
                 </div>
               </div>
             </div>
