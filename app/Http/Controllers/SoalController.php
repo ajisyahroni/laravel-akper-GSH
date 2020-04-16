@@ -81,7 +81,7 @@ class SoalController extends Controller
             return $error;
         }
         Soal::create($request->all());
-        return redirect('/admin/view/soal');
+        return redirect()->back();
     }
 
     /**
@@ -135,7 +135,7 @@ class SoalController extends Controller
         $singleSoal->option_5 = $request->option_5 ? $request->option_5 : $singleSoal->option_5;
         $singleSoal->jawaban = $request->jawaban ? $request->jawaban : $singleSoal->jawaban;
         $singleSoal->update();
-        return redirect('/admin/view/soal');
+        return redirect()->back();
     }
 
     /**
@@ -148,6 +148,6 @@ class SoalController extends Controller
     {
         $singleSoal = Soal::where('id', $id);
         $singleSoal->delete();
-        return redirect('/admin/view/soal');
+        return redirect()->back();
     }
 }

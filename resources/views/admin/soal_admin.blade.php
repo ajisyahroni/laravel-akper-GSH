@@ -45,7 +45,7 @@
                 <div class="row">
                   <!-- SOAL -->
                   <div class="col-10">
-                    <h5>{{ $soal->id }}. {{ $soal->pertanyaan}} ?</h5>
+                    <h5>{{ $soal->pertanyaan}} ?</h5>
                   </div>
                   <!-- AKSI -->
                   <div class="col-2 justify-content-end">
@@ -61,15 +61,15 @@
                 <div class="row">
                   <div class="col-12">
                     <ol type="a">
-                      <li>{{ $soal->option_1 }}</li>
-                      <li>{{ $soal->option_2 }}</li>
-                      <li>{{ $soal->option_3 }}</li>
-                      <li>{{ $soal->option_4 }}</li>
-                      <li>{{ $soal->option_5 }}</li>
+                      <li class="{{ ('option_1' == $soal->jawaban) ? 'text-info' : '' }}" >{{ $soal->option_1 }}</li>
+                      <li class="{{ ('option_2' == $soal->jawaban) ? 'text-info' : '' }}" >{{ $soal->option_2 }}</li>
+                      <li class="{{ ('option_3' == $soal->jawaban) ? 'text-info' : '' }}" >{{ $soal->option_3 }}</li>
+                      <li class="{{ ('option_4' == $soal->jawaban) ? 'text-info' : '' }}" >{{ $soal->option_4 }}</li>
+                      <li class="{{ ('option_5' == $soal->jawaban) ? 'text-info' : '' }}" >{{ $soal->option_5 }}</li>
                     </ol>
                   </div>
                 </div>
-                <span>jawaban :<strong>{{ $soal->jawaban }}</strong></span>
+                <span>jawaban :<strong class="text-info">{{ $soal->jawaban }}</strong></span>
                 <hr>
               </div>
 
