@@ -39,7 +39,7 @@ class SoalController extends Controller
                 }
             }
         }
-        return response()->json($score);
+        return response()->json(['msg' => 'berhasil koreksi', 'score' => $score], 200);
     }
 
     /**
