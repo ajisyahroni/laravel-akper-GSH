@@ -42,9 +42,12 @@ class UserController extends Controller
 
     public function uploadTransfer(Request $req)
     {
-        $bukti_tf_file = $req->file('file_bukti_transfer');
-        $bukti_tf_url = "/$this->folderTransfer/" . time() . "_" . $bukti_tf_file->getClientOriginalName();
-        $bukti_tf_file->move($this->folderTransfer, $bukti_tf_url);
+        $bukti_tf_url = "https://dummyimage.com/600x400/ffe8ff/767bc4";
+        if (env('APP_ENV', 'local')) {
+            $bukti_tf_file = $req->file('file_bukti_transfer');
+            $bukti_tf_url = "/$this->folderTransfer/" . time() . "_" . $bukti_tf_file->getClientOriginalName();
+            $bukti_tf_file->move($this->folderTransfer, $bukti_tf_url);
+        }
 
         $id = Auth::id();
         $singleUser = User::where('id', $id)->first();
@@ -101,18 +104,18 @@ class UserController extends Controller
             'sekolah_asal' => 'required|string',
             'rata_nem' => 'required',
             'isCBT' => 'required|numeric',
-            'password' => 'required|string|min:6'
+            'password' => 'required|string|min:6|confirmed'
         ];
         $input = $req->all();
 
-        $foto_url = "";
-        $ijazah_url = "";
-        $test_kesehatan_url = "";
+        $foto_url = "https://dummyimage.com/600x400/ffe8ff/767bc4";
+        $ijazah_url = "https://dummyimage.com/600x400/ffe8ff/767bc4";
+        $test_kesehatan_url = "https://dummyimage.com/600x400/ffe8ff/767bc4";
 
         $validator = Validator::make($input, $rules);
         if ($validator->fails()) {
             $error = $validator->errors()->all();
-            return $error;
+            return redirect()->back()->withErrors($validator);
         }
 
         if (env('APP_ENV', 'local')) {
