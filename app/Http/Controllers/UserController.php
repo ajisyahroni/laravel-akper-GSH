@@ -64,8 +64,9 @@ class UserController extends Controller
     {
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            // return view('user/dashboard_user', ['user' => Auth::user()]);
             return redirect()->route('dashboard.view');
+        } else {
+            return redirect()->back()->withErrors(['cek email kembali dan password']);
         }
     }
     public function logout()
