@@ -66,8 +66,9 @@
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animated fadeInDown">Selamat Datang di <span>AKPER GSH</span></h2>
-                <p class="animated fadeInUp">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis mollitia temporibus quisquam ullam at possimus alias eligendi sed quas deserunt. Labore quas officiis eum dolorum odit repellat molestiae quo consequatur?</p>
-                <a href="" class="btn-get-started animated fadeInUp">Read More</a>
+                <p class="animated fadeInUp">Visi AKPER Giri Satria Husada Wonogiri adalah:
+                  “Menjadi Program studi penghasil tenaga perawat Vokasi yang profesional di era global dan unggul dalam bidang keahlian keperawatan dasar di tahun 2020”
+                </p>
               </div>
             </div>
           </div>
@@ -76,9 +77,8 @@
           <div class="carousel-item" style="background: url(assets/img/slide/slide-2.jpg)">
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2 class="animated fadeInDown">Content <span>content</span></h2>
-                <p class="animated fadeInUp">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas quis veritatis porro molestias fugiat sit blanditiis consequatur dolores illo voluptate! Ab, mollitia dolore? Modi vero aliquid sapiente a deserunt praesentium?</p>
-                <a href="" class="btn-get-started animated fadeInUp">Read More</a>
+                <h2 class="animated fadeInDown">Sejarah <span>Akper GSH Wonogiri</span></h2>
+                <p class="animated fadeInUp">Akademi Keperawatan Giri Satria Husada Wonogiri berdiri sejak tahun 1995 di Kabupaten Wonogiri dengan berlokasi di Jl. Tentara Pelajar No. 01 Joho Lor Giriwono Wonogiri. Akademi ini didirikan oleh yayasan Giri Satria Husada yang berdiri pada 09 Februari 1995 berdasarkan Akta Pendirian yayasan Nomor 20 didepan pejabat Pembuat Akta Ny. Moeslichatoen Rochaditomo, S.H.</p>
               </div>
             </div>
           </div>
@@ -87,9 +87,8 @@
           <div class="carousel-item" style="background: url(assets/img/slide/slide-3.jpg)">
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2 class="animated fadeInDown">Content <span>Content</span></h2>
-                <p class="animated fadeInUp">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique sunt libero sed expedita soluta obcaecati provident non officiis culpa nobis commodi consequuntur ex distinctio repudiandae, quis modi! Hic, a temporibus?</p>
-                <a href="" class="btn-get-started animated fadeInUp">Read More</a>
+                <h2 class="animated fadeInDown">Tentang<span>Akper GSH Wonogiri</span></h2>
+                <p class="animated fadeInUp">Akademi ini mendapatkan ijin sementara penyelenggaraan oleh Kemenkes Republik Indonesia pada 10 April 1995 dengan Nomor SK: HK.00.06.1.1.1121 dan diperpanjang dengan ijin perpanjangan penyelenggaraan pendidikan dari Kemenkes dengan Nomor SK: HK. 03.2.411.2685 pada bulan Juli 2005. Akademi ini mengalami alih bina dari Kementrian Kesehatan ke Kementrian Pendidikan Nasional pada 1 Februari 2007 dengan SK Kemendiknas Nomor 29/D/O/2007. Akademi Keperawatan Giri Satria merupakan satu-satunya perguruan tinggi ilmu keperawatan di Kabupaten Wonogiri.</p>
               </div>
             </div>
           </div>
@@ -144,24 +143,24 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="icon-box">
               <img class="img-thumbnail" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-1.jpg" alt="">
-              <h4><a href="">Berita Utama 1</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+              <h4><a href="">Ayo Lawan Virus Corona Bersama Mahasiswa Akper GSH Wonogiri Dengan #4M</a></h4>
+              <p>Beberapa waktu ini, dunia sedang dihebohkan dengan suatu penyakit yang disebabkan oleh virus coronavirus. Virus...</p>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
             <div class="icon-box">
               <img class="img-thumbnail" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-2.jpg" alt="">
-              <h4><a href="">Berita Utama 2</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+              <h4><a href="">PERSIAPAN LED dan LKPT utk akreditasi AIPT 3.0</a></h4>
+              <p>Dalam rangka peningkatan mutu dan kualitas AKPER GSH Wonogiri, pada tanggal 28 Oktober 2019 pihak...</p>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
             <div class="icon-box">
               <img class="img-thumbnail" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-3.jpg" alt="">
-              <h4><a href="">Berita Utama 3</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+              <h4><a href="">SEMINAR NASIONAL KEPERAWATAN</a></h4>
+              <p>Kegiatan seminar nasional kewirausahaan dalam praktek mandiri keperawatan di akper GSH Wonogiri bersama Alumni GSH</p>
             </div>
           </div>
         </div>
