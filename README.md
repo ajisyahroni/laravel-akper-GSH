@@ -8,4 +8,8 @@
 </p>
 
 ## Note
+<<<<<<< HEAD
 branch ini merupakan gabungan dari dev/pakde dan dev/pengges
+=======
+branch khusus pengges
+>>>>>>> 9173391d8ce2779fad43dde4d8008fc3d9e40665

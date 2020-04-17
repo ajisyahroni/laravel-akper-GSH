@@ -210,6 +210,7 @@
                     ijazah.onchange = function(evt) {
                         let name = evt.target.files[0].name
                         ijazahPreview.innerHTML = name
+<<<<<<< HEAD
                     }
                 </script>
             </div>
@@ -223,6 +224,12 @@
                     <input type="password" name="" id="confirm_password" class="form-control">
                 </div>
             </div>
+=======
+                        
+                    }
+                </script>
+            </div>
+>>>>>>> 9173391d8ce2779fad43dde4d8008fc3d9e40665
             <div class="my-5 d-block">
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="auth">

@@ -35,7 +35,11 @@
   ======================================================== -->
 </head>
 
+<<<<<<< HEAD
 <body class="bg-light">
+=======
+<body>
+>>>>>>> 9173391d8ce2779fad43dde4d8008fc3d9e40665
 
   <!-- ======= Header ======= -->
   <header id="header">
@@ -62,12 +66,18 @@
     <section id="dashboard" class="about">
       <div class="container">
         <div class="row px-5">
+<<<<<<< HEAD
           <h4 class="my-3" data-aos="fade-right">Dashboard</h4>
           <div class="container bg-white shadow" data-aos="fade-right">
             <div class="row px-3" style="background:#f3f3f3;">
               <h5>Tahapan</h5>
             </div>
             <form action="" class="p-3">
+=======
+          <div class="container bg-light py-4 shadow-sm" data-aos="fade-right">
+            <h3>Tahapan</h3>
+            <form action="">
+>>>>>>> 9173391d8ce2779fad43dde4d8008fc3d9e40665
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="tahap_1" disabled>
                 <label class="custom-control-label" for="tahap_1"><del>Regestrasi</del></label>
@@ -87,6 +97,7 @@
             </form>
           </div>
 
+<<<<<<< HEAD
             <div class="row my-5 mx-auto" data-aos="fade-left">
               <div class="col-md-6 bg-white mb-5">
                 <img src="{{asset('img/activate_user.png')}}" class="img-thumbnail img-fluid w-75 mx-auto my-3 d-flex justify-content-center" alt="foto"><br>
@@ -98,6 +109,20 @@
               </div>
             </div>
           
+=======
+          <div class="container bg-light my-3 py-4 shadow-sm" data-aos="fade-left">
+            <div class="row">
+              <div class="col-md-6">
+                <img src="{{asset('img/activate_user.png')}}" class="img-thumbnail img-fluid w-75 mx-5 my-3" alt="foto"><br>
+                <button class="btn btn-success btn-block" data-toggle="modal" data-target="#upload_bukti_tf">Aktivasi Akun</button>
+              </div>
+              <div class="col-md-6">
+                <img src="{{asset('img/test.png')}}" class="img-thumbnail img-fluid w-75 mx-5 my-3" alt="foto"><br>
+                <a class="btn btn-info btn-block text-white" href="/user/view/test">Ambil Test</a>
+              </div>
+            </div>
+          </div>
+>>>>>>> 9173391d8ce2779fad43dde4d8008fc3d9e40665
         </div>
       </div>
     </section><!-- End About Section -->

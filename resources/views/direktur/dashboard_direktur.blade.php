@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends('direktur.master.master')
 
 @section('content')
@@ -138,3 +139,19 @@
   </div>
   @endsection
   
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    dshboard direktur
+</body>
+
+</html>
+>>>>>>> 9173391d8ce2779fad43dde4d8008fc3d9e40665

@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- DataTables -->
     <link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -86,5 +87,13 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+=======
+    <title>Document</title>
+</head>
+
+<body>
+    login
+</body>
+>>>>>>> 9173391d8ce2779fad43dde4d8008fc3d9e40665
 
 </html>

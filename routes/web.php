@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('landing_page');
 });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9173391d8ce2779fad43dde4d8008fc3d9e40665
 // ADMIN GROUP
 Route::group(['prefix' => 'admin/view'], function () {
     Route::get('/login', function () {
@@ -25,9 +29,12 @@ Route::group(['prefix' => 'admin/view'], function () {
     Route::get('/dashboard', function () {
         return view('admin/dashboard_admin');
     });
+<<<<<<< HEAD
     Route::get('/detail', function () {
         return view('admin/detail');
     });
+=======
+>>>>>>> 9173391d8ce2779fad43dde4d8008fc3d9e40665
     Route::get('/soal', function () {
         return view('admin/soal_admin');
     });

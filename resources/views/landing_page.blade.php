@@ -127,6 +127,7 @@
           <div class="col-lg-4 pt-4 pt-lg-0 content">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             <a href="user/view/registration" class="btn btn-danger float-lg-right my-3 py-2" style="padding:0 50px 0 50px;">Registrasi</a>
 =======
             <a href="user/view/registration" class="btn btn-danger float-lg-right my-lg-3 py-2" style="padding:0 50px 0 50px;">Registrasi</a>
@@ -134,6 +135,9 @@
 =======
             <a href="user/view/registration" class="btn btn-danger float-lg-right my-lg-3 py-2" style="padding:0 50px 0 50px;">Registrasi</a>
 >>>>>>> e632893ba9b4c3bb4220d4286fee70c2173f41e1
+=======
+            <a href="user/view/registration" class="btn btn-danger float-lg-right my-lg-3 py-2" style="padding:0 50px 0 50px;">Registrasi</a>
+>>>>>>> 9173391d8ce2779fad43dde4d8008fc3d9e40665
             <a href="user/view/login" class="btn btn-danger float-lg-right py-2" style="padding:0 67px 0 67px;">Login</a>
           </div>
         </div>
@@ -153,6 +157,7 @@
             <div class="icon-box">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
               <img class="img-thumbnail img-fluid" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-1.jpg" alt="">
 =======
               <img class="img-thumbnail" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-1.jpg" alt="">
@@ -160,6 +165,9 @@
 =======
               <img class="img-thumbnail" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-1.jpg" alt="">
 >>>>>>> e632893ba9b4c3bb4220d4286fee70c2173f41e1
+=======
+              <img class="img-thumbnail" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-1.jpg" alt="">
+>>>>>>> 9173391d8ce2779fad43dde4d8008fc3d9e40665
               <h4><a href="">Berita Utama 1</a></h4>
               <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
             </div>
@@ -169,6 +177,7 @@
             <div class="icon-box">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
               <img class="img-thumbnail img-fluid" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-2.jpg" alt="">
 =======
               <img class="img-thumbnail" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-2.jpg" alt="">
@@ -176,6 +185,9 @@
 =======
               <img class="img-thumbnail" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-2.jpg" alt="">
 >>>>>>> e632893ba9b4c3bb4220d4286fee70c2173f41e1
+=======
+              <img class="img-thumbnail" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-2.jpg" alt="">
+>>>>>>> 9173391d8ce2779fad43dde4d8008fc3d9e40665
               <h4><a href="">Berita Utama 2</a></h4>
               <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
             </div>
@@ -185,6 +197,7 @@
             <div class="icon-box">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
               <img class="img-thumbnail img-fluid" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-3.jpg" alt="">
 =======
               <img class="img-thumbnail" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-3.jpg" alt="">
@@ -192,6 +205,9 @@
 =======
               <img class="img-thumbnail" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-3.jpg" alt="">
 >>>>>>> e632893ba9b4c3bb4220d4286fee70c2173f41e1
+=======
+              <img class="img-thumbnail" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-3.jpg" alt="">
+>>>>>>> 9173391d8ce2779fad43dde4d8008fc3d9e40665
               <h4><a href="">Berita Utama 3</a></h4>
               <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
             </div>
@@ -208,6 +224,7 @@
       </div>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <div class="row table-responsive my-4">
 =======
       <div class="row my-4">
@@ -215,6 +232,9 @@
 =======
       <div class="row my-4">
 >>>>>>> e632893ba9b4c3bb4220d4286fee70c2173f41e1
+=======
+      <div class="row my-4">
+>>>>>>> 9173391d8ce2779fad43dde4d8008fc3d9e40665
 
 
         <table class="table my-3">
