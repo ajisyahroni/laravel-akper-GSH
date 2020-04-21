@@ -48,8 +48,10 @@
                   <td>
                     @if ($user->hasActivated == 1)
                     aktif
-                    @elseif (!isset($user->hasActivated))
+                    @elseif (!isset($user->hasActivated) && !isset($user->tf_url))
                     belum
+                    @elseif (!isset($user->hasActivated) && isset($user->tf_url))
+                    menunggu
                     @else
                     ditolak
                     @endif
@@ -76,6 +78,7 @@
                     </span>
                   </td>
                 </tr>
+                <!-- MODAL OPSI -->
                 <div class="modal fade" id="cekbelum-{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -89,6 +92,7 @@
                         <p>Bukti TF oleh {{ $user->nama }}:</p>
                         @if(isset($user->tf_url))
                         <div class="text-center"> <img class="img-fluid" src="{{ url($user->tf_url) }}" alt=""> </div>
+                        <a href="{{url($user->tf_url)}}" target="_blank">lihat penuh</a>
                         @else
                         <div class="text-center">
                           <img class="img-fluid" src="{{ asset('/img/upload.png') }}" alt="">
@@ -103,12 +107,14 @@
                             <button type="button" onclick="rejectUser({{$user->id}})" class="btn btn-danger">tolak</button>
                           </div>
                           <div class="col">
-                            <button type="button" onclick="activateUser({{$user->id}})" class="btn btn-success">ACC</button>
+                            <button type="button" onclick="activateUser({{$user->id}})" class="btn btn-success">terima</button>
                             <script>
                               function rejectUser(id) {
                                 fetch('{{ url("/admin/action/user/reject-user/id=") }}' + id).then(res => {
                                   if (res.ok) {
-                                    location.reload()
+                                    // location.reload()
+                                    $("#cekbelum-" + id).modal("hide");
+                                    $("#ceksudah-" + id + "-reject").modal();
                                   } else {
                                     alert("gagal melakukan penolakan")
                                   }
@@ -118,7 +124,9 @@
                               function activateUser(id) {
                                 fetch('{{ url("/admin/action/user/activate-user/id=") }}' + id).then(res => {
                                   if (res.ok) {
-                                    location.reload()
+                                    // location.reload()
+                                    $("#cekbelum-" + id).modal("hide");
+                                    $("#ceksudah-" + id).modal();
                                   } else {
                                     alert("gagal melakukan aktivasi")
                                   }
@@ -132,38 +140,72 @@
                     </div>
                   </div>
                 </div>
+
+                <!-- MODAL EMAIL ACC -->
+                <div class="modal fade" id="ceksudah-{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Akun Teraktivasi</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <p>Hay<b> {{ $user->nama }}</b></p>
+                        <p>Selamat akun telah teraktivasi</p>
+                        <p>Langkah selanjutnya adalah melakukan test online, harap ikuti prosedur yang ada.</p>
+                        <p class="mt-5" style="color:red;">*kirimkan info akun berikut ke </p>
+                        <p><b>{{$user->email}}</b></p>
+                      </div>
+
+                      <div class="modal-footer">
+                        <button onclick="hasSentEmail()" id="hasSentEmail" class="btn btn-block btn-success">saya sudah mengirim</button>
+                        <script>
+                          function hasSentEmail() {
+                            location.reload()
+                          }
+                        </script>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <!-- MODAL EMAIL REJECT -->
+                <div class="modal fade" id="ceksudah-{{ $user->id }}-reject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Akun Gagal Teraktivasi</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <p>Hay<b> {{ $user->nama }}</b></p>
+                        <p>Mohon Maaf, akun anda gagal diaktivasi</p>
+                        <p>mohon upload ulang bukti transfer dengan gambar yang valid dan jelas</p>
+                        <p class="mt-5" style="color:red;">*kirimkan info akun berikut ke </p>
+                        <p><b>{{$user->email}}</b></p>
+                      </div>
+
+                      <div class="modal-footer">
+                        <button onclick="hasSentEmailReject()" id="hasSentEmailReject" class="btn btn-block btn-danger">saya sudah mengirim</button>
+                        <script>
+                          function hasSentEmailReject() {
+                            location.reload()
+                          }
+                        </script>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
                 @endforeach
               </tbody>
             </table>
-            <div class="modal fade" id="ceksudah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Akun Teraktifasi</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <p style="font-family:Arial, Helvetica, sans-serif;">anda telah mengaktivasi akun<b> Adi Yoga Prakasa</b></p>
-                    <table class="table">
-                      <tbody>
-                        <tr>
-                          <td>email :</td>
-                          <td>adi@gmail.com</td>
-                        </tr>
-                        <tr>
-                          <td>password: </td>
-                          <td>akukudupiyemas</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <p style="color:red;">*kirimkan info akun berikut ke aji</p>
-                  </div>
 
-                </div>
-              </div>
-            </div>
           </div>
           <!-- /.card-body -->
         </div>
