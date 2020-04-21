@@ -91,6 +91,8 @@
               @else
               <div class="alert alert-danger" role="alert">Mohon maaf anda gagal test, skor anda {{Auth::user()->score}}</div>
               @endif
+              @else
+              <div class="alert alert-info" role="alert">Lakukan aktivasi dengan upload bukti transfer, agar bisa test</div>
               @endif
               <div class="row">
 
@@ -108,6 +110,8 @@
                   <img src="{{asset('img/test.png')}}" class="img-thumbnail img-fluid w-75 mx-5 my-3" alt="foto"><br>
                   @if(Auth::user()->hasActivated == 1 && isset(Auth::user()->hasTested))
                   <button disabled style="cursor: not-allowed" class="btn btn-secondary btn-block text-white">Sudah test</button>
+                  @elseif(Auth::user()->hasActivated == 0 )
+                  <button disabled style="cursor: not-allowed" class="btn btn-secondary btn-block text-white">Ambil Test</button>
                   @else
                   <a class="btn btn-info btn-block text-white" href="{{ route('test.user') }} ">Ambil Test</a>
                   @endif
