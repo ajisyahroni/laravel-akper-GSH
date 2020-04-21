@@ -86,11 +86,13 @@
               @if(Auth::user()->hasActivated == 1 && !isset(Auth::user()->hasTested))
               <div class="alert alert-info" role="alert">Akun anda sudah aktif, silahkan mengambil test</div>
               @elseif(Auth::user()->hasActivated == 1 && isset(Auth::user()->hasTested))
-              @if(Auth::user()->score > 8)
+              @if(Auth::user()->score > 80)
               <div class="alert alert-success" role="alert">Selamat anda lolos test, skor anda {{ Auth::user()->score }}</div>
               @else
               <div class="alert alert-danger" role="alert">Mohon maaf anda gagal test, skor anda {{Auth::user()->score}}</div>
               @endif
+              @elseif(Auth::user()->hasActivated == 0 && isset(Auth::user()->tf_url))
+              <div class="alert alert-info" role="alert">Anda sudah melakukan upload, harap menunggu konfirmasi dari admin</div>
               @else
               <div class="alert alert-info" role="alert">Lakukan aktivasi dengan upload bukti transfer, agar bisa test</div>
               @endif
@@ -98,9 +100,13 @@
 
                 <div class="col-md-6">
                   <img src="{{asset('img/activate_user.png')}}" class="img-thumbnail img-fluid w-75 mx-5 my-3" alt="foto"><br>
-                  @if(Auth::user()->hasActivated == 0)
+                  @if(Auth::user()->hasActivated == 0 && !isset(Auth::user()->tf_url))
+                  <button class="btn btn-info btn-block" data-toggle="modal" data-target="#upload_bukti_tf">Aktivasi Akun</button>
+                  @elseif(Auth::user()->hasActivated == 0 && isset(Auth::user()->tf_url))
+                  <a href="{{ url(Auth::user()->tf_url) }}" target="_blank">lihat bukti tf anda</a>
                   <button class="btn btn-info btn-block" data-toggle="modal" data-target="#upload_bukti_tf">Aktivasi Akun</button>
                   @else
+                  <a href="">lihat bukti transfer anda</a>
                   <button class="btn btn-secondary btn-block" disabled style="cursor: not-allowed">Sudah aktif</button>
                   @endif
 

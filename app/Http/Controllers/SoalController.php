@@ -14,7 +14,7 @@ use Illuminate\Validation\Rule;
 class SoalController extends Controller
 {
     // PROPERTY 
-    public $totalQuestion = 10;
+    public $totalQuestion = 100;
     public $pointPerQuestion = 1;
     /**
      * Display a listing of the resource.
