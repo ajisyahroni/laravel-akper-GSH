@@ -26,13 +26,15 @@
       <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Detail Profile</h3>
+            <h3 class="card-title">Detail Profil {{ $user->nama }}</h3>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
             <div class="row container mr-5 ">
               <div class="col-4 ml-2">
                 <img style="width: 250px;" src="{{ url($user->tf_url) }}" alt="">
+                <br>
+                <a target="_blank" href="{{ url($user->tf_url) }}">lihat photo profile</a>
               </div>
               <div class="col-sm mt-3">
                 <h2 style="font-family: Arial, Helvetica, sans-serif;">Data Pribadi</h2>
@@ -126,7 +128,7 @@
                   <tr>
                     <td>Email</td>
                     <td>:</td>
-                    <td>pajangan@gmail.com</td>
+                    <td>{{ $user->email }}</td>
                   </tr>
                   <tr>
                     <td><a download href="{{ url($user->ijazah_url) }}">Download Ijazah</a></td>
