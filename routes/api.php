@@ -17,11 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-<<<<<<< HEAD
 
 // FORCES HTTPS SCHEMA
 if (App::environment('production')) {
     URL::forceScheme('https');
 }
-=======
->>>>>>> 9173391d8ce2779fad43dde4d8008fc3d9e40665
