@@ -1,28 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{url('assets/img/favicon.png')}}" rel="icon">
-    <link href="{{url('assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
-    <link rel="stylesheet" href="{{url('assets/vendor/bootstrap/css/bootstrap.min.css')}}">
-    <link href="{{url('assets/css/style.css')}}" rel="stylesheet">
-    <title>Regestrasi</title>
-</head>
-
-<body>
-    <header id="header">
-        <div class="container d-flex">
-            <div class="logo mr-auto">
-                <h1 class="text-light"><a href="/"><span>AKPER GSH</span></a></h1>
-            </div>
-        </div>
-    </header>
-
-
-
     @extends('user/layout/main')
+    @section('title','Registrasi')
+
+    @section('container')
+
     <form class="bg-light shadow-sm p-4 rounded" action="{{ route('register.user') }}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="container">
@@ -386,19 +366,4 @@
         </div>
     </form>
 
-    <footer id="footer">
-        <div class="container">
-            <div class="copyright">
-                &copy; Copyright <strong><span>AKPER GSH</span></strong>. All Rights Reserved
-            </div>
-            <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/eterna-free-multipurpose-bootstrap-template/ -->
-            </div>
-        </div>
-    </footer>
-</body>
-
-</html>
+    @endsection
