@@ -134,9 +134,10 @@
                     <td><a download href="{{ url($user->ijazah_url) }}">Download Ijazah</a></td>
                   </tr>
                   <tr>
-
                     <td><a download href="{{ url($user->test_kesehatan_url) }}">Download Test kesehatan</a></td>
-
+                  </tr>
+                  <tr>
+                    <td><a download href="{{ url($user->tf_url) }}">Download Bukti Transfer</a></td>
                   </tr>
                 </table>
                 <div align="right" class="mt-4">
