@@ -32,9 +32,9 @@
           <div class="card-body">
             <div class="row container mr-5 ">
               <div class="col-4 ml-2">
-                <img style="width: 250px;" src="{{ url($user->tf_url) }}" alt="">
+                <img style="width: 250px;" src="{{ url($user->foto_url) }}" alt="">
                 <br>
-                <a target="_blank" href="{{ url($user->tf_url) }}">lihat photo profile</a>
+                <a target="_blank" href="{{ url($user->foto_url) }}">lihat photo profile</a>
               </div>
               <div class="col-sm mt-3">
                 <h2 style="font-family: Arial, Helvetica, sans-serif;">Data Pribadi</h2>
