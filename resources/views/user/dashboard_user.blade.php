@@ -150,10 +150,7 @@
   </footer><!-- End  Footer -->
 
   <!-- Modal -->
-  @extends('user/layout/main')
-  @section('title','Dashboard')
-
-  @section('container')
+ 
 
 
   <!-- Modal -->
@@ -224,4 +221,3 @@
 </body>
 
 </html>
-@endsection
