@@ -206,7 +206,7 @@
             <div class="lolita ">
 
               <li class="nav-item">
-                <a href="/direktur/view/login" class="btn btn-sm btn-danger mb-3">
+                <a href="{{ route('logout.direktur') }}" class="btn btn-sm btn-danger mb-3">
                   <strong>keluar</strong>
                   <!-- <p style="font-size: 20px;" class="badge badge-danger">
                     keluar

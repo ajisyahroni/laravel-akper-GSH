@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 
 class DirekturController extends Controller
@@ -12,9 +13,23 @@ class DirekturController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function login()
+    public function login_view()
     {
         return view('direktur/login_direktur');
+    }
+    public function login(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+        if (Auth::guard('direktur')->attempt($credentials)) {
+            return redirect()->route('dashboard.direktur.view');
+        } else {
+            return redirect()->back()->withErrors(['cek email kembali dan password']);
+        }
+    }
+    public function logout()
+    {
+        Auth::guard('direktur')->logout();
+        return redirect()->route('login.direktur.view');
     }
     public function dashboard()
     {

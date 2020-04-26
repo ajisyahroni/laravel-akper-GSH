@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Soal;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+
 use App\User;
+use App\Admin;
+use App\Soal;
+
 
 class AdminController extends Controller
 {
@@ -15,9 +20,23 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function login()
+    public function login_view()
     {
         return view('admin/login_admin');
+    }
+    public function login(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+        if (Auth::guard('admin')->attempt($credentials)) {
+            return redirect()->route('dashboard.admin.view');
+        } else {
+            return redirect()->back()->withErrors(['cek email kembali dan password']);
+        }
+    }
+    public function logout()
+    {
+        Auth::guard('admin')->logout();
+        return redirect()->route('login.admin.view');
     }
 
     public function dashboard()

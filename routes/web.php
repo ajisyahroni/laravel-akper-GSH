@@ -17,19 +17,26 @@ Route::get('/', function () {
     return view('landing_page');
 })->name('landing.page');
 
-// ADMIN GROUP
+/*
+----------------------------------------------------------------------
+ADMIN ROUTE 
+----------------------------------------------------------------------
+*/
+
 Route::group(['prefix' => 'admin'], function () {
 
     // VIEW 
     Route::group(['prefix' => 'view'], function () {
-        Route::get('/login', 'AdminController@login');
-        Route::get('/dashboard', 'AdminController@dashboard');
+        Route::get('/login', 'AdminController@login_view')->name('login.admin.view');
+        Route::get('/dashboard', 'AdminController@dashboard')->name('dashboard.admin.view');
         Route::get('/show-user/detail/id={id}', 'AdminController@showUserDetail');
         Route::get('/soal', 'AdminController@showSoal');
     });
 
     // ACTION
     Route::group(['prefix' => 'action'], function () {
+        Route::post('/login-admin', 'AdminController@login')->name('login.admin');
+        Route::get('/logout-admin', 'AdminController@logout')->name('logout.admin');
 
         // DASHBOARD DATA USER
         Route::group(['prefix' => 'user'], function () {
@@ -47,25 +54,42 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 
-// DIREKTUR GROUP
+/*
+----------------------------------------------------------------------
+DIREKTUR ROUTE 
+----------------------------------------------------------------------
+*/
 Route::group(['prefix' => 'direktur'], function () {
+    // VIEW
     Route::group(['prefix' => 'view'], function () {
-        Route::get('/login', 'DirekturController@login');
-        Route::get('/dashboard', 'DirekturController@dashboard');
+        Route::get('/login', 'DirekturController@login_view')->name('login.direktur.view');
+        Route::get('/dashboard', 'DirekturController@dashboard')->name('dashboard.direktur.view');
         Route::get('/show-user/detail/id={id}', 'DirekturController@userById');
+    });
+
+    // ACTION
+    Route::group(['prefix' => 'action'], function () {
+        Route::post('/login-direktur', 'DirekturController@login')->name('login.direktur');
+        Route::get('/logout-direktur', 'DirekturController@logout')->name('logout.direktur');
     });
 });
 
 
-
+/*
+----------------------------------------------------------------------
+USER ROUTE 
+----------------------------------------------------------------------
+*/
 Route::group(['prefix' => 'user'], function () {
+    // VIEW
     Route::group(['prefix' => 'view'], function () {
         Route::get('/login', 'UserController@login_view')->name('login.view');
-        Route::get('/dashboard', 'UserController@dashboard_view')->name('dashboard.view');
+        Route::get('/dashboard', 'UserController@dashboard_view')->name('dashboard.view')->middleware('auth');
         Route::get('/registration', 'UserController@register_view')->name('registration.view');
-        Route::get('/test', 'SoalController@indexRandom')->name('test.user');
+        Route::get('/test', 'SoalController@indexRandom')->name('test.user')->middleware('auth');
     });
 
+    // ACTIONS
     Route::group(['prefix' => 'action'], function () {
         Route::get('/logout', 'UserController@logout')->name('logout.user');
         Route::post('/create-user', 'UserController@create')->name('register.user');
