@@ -15,7 +15,7 @@ class SoalSeeder extends Seeder
     {
         $faker = Faker::create('id_ID');
         $random_option = ['option_1', 'option_2', 'option_3', 'option_4', 'option_5'];
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 200; $i++) {
             $random_index = array_rand($random_option);
             DB::table('soals')->insert([
                 'pertanyaan' => $faker->text,
