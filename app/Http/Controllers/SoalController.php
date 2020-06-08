@@ -24,10 +24,30 @@ class SoalController extends Controller
 
     public function indexRandom()
     {
+        // OLD LOGIC
+        // if (Auth::check()) {
+        //     $soal = Soal::all()->random($this->totalQuestion);
+        //     $total = $soal->count();
+        //     return view('user/test_user', ['soals' => $soal, 'total' => $total]);
+        // }
         if (Auth::check()) {
-            $soal = Soal::all()->random($this->totalQuestion);
-            $total = $soal->count();
-            return view('user/test_user', ['soals' => $soal, 'total' => $total]);
+            $allSoal = Soal::all();
+            $countSoal = $allSoal->count();
+
+            if($countSoal > 0){
+                if ($countSoal >= 100) {
+                    $soal = Soal::all()->random($this->totalQuestion);
+                    $total = $soal->count();
+                    return view('user/test_user', ['soals' => $soal, 'total' => $total]);
+                } else {
+                    $soal = Soal::inRandomOrder()->get();
+                    $total = $soal->count();
+                    return view('user/test_user', ['soals' => $soal, 'total' => $total]);
+                }
+            }
+            else{
+                return "sedang dalam proses penyusunan soal";
+            }
         }
     }
     public function koreksi(Request $request)
@@ -35,12 +55,22 @@ class SoalController extends Controller
         if (Auth::check()) {
             $score = 0;
             $object = json_decode($request->getContent(), true);
+            $countSoal = Soal::all()->count();
+            $pointPerSoal = 0;
+            if($countSoal >= 100){
+                $pointPerSoal = 1;
+            }
+            else{
+                $pointPerSoal = 100 / $countSoal;
+            }
+
+
             foreach ($object as $key => $value) {
                 $singleSoal = Soal::where('id', $value["id"])->first();
 
                 if ($singleSoal) {
                     if ($singleSoal->jawaban == $value['jawaban']) {
-                        $score += $this->pointPerQuestion;
+                        $score += $pointPerSoal;
                     }
                 }
             }
@@ -48,7 +78,7 @@ class SoalController extends Controller
             $id = Auth::id();
             $singleUser = User::where('id', $id)->first();
             $singleUser->hasTested = Carbon::now();
-            $singleUser->score = $score;
+            $singleUser->score = $score > 100 ? 100 : $score;
             $singleUser->save();
 
             return response()->json(['msg' => 'berhasil koreksi', 'score' => $score], 200);

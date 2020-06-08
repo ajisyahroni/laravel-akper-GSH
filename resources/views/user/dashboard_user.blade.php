@@ -86,7 +86,7 @@
               @if(Auth::user()->hasActivated == 1 && !isset(Auth::user()->hasTested))
               <div class="alert alert-info" role="alert">Akun anda sudah aktif, silahkan mengambil test</div>
               @elseif(Auth::user()->hasActivated == 1 && isset(Auth::user()->hasTested))
-              @if(Auth::user()->score > 80)
+              @if(Auth::user()->score >= 80)
               <div class="alert alert-success" role="alert">Selamat anda lolos test, skor anda {{ Auth::user()->score }}</div>
               @else
               <div class="alert alert-danger" role="alert">Mohon maaf anda gagal test, skor anda {{Auth::user()->score}}</div>
