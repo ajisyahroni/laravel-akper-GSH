@@ -26,13 +26,16 @@
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Data Register</h3>
+            <div class="float-right">
+              <a onclick="printData()" href="#">cetak</a>
+            </div>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-            <table id="example1" class="table table-bordered table-striped">
+            <table border="1" id="tableReal" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th>Name</th>
+                  <th>Nama</th>
                   <th>SMA Asal</th>
                   <th>Alamat</th>
                   <th>Status</th>
@@ -205,6 +208,61 @@
                 @endforeach
               </tbody>
             </table>
+
+          </div>
+          <div class="card-body d-none">
+            <table border="1" id="tableHide" class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <th>Nama</th>
+                  <th>TTL</th>
+                  <th>SMA Asal</th>
+                  <th>Alamat</th>
+                  <th>Email</th>
+                  <th>NIK</th>
+                  <th>NEM</th>
+                  <th>agama</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($users as $user)
+                <tr>
+                  <td>{{ $user->nama }}</td>
+                  <td>{{ $user->tempat_lahir }} / {{ $user->tanggal_lahir }}</td>
+                  <td>{{ $user->sekolah_asal }}</td>
+                  <td>{{ $user->alamat }}, {{ $user->kota }}</td>
+                  <td>{{ $user->email }}</td>
+                  <td>{{ $user->nik }}</td>
+                  <td>{{ $user->rata_nem }}</td>
+                  <td>{{ $user->agama }}</td>
+                  <td>
+                    @if ($user->hasActivated == 1)
+                    aktif
+                    @elseif (!isset($user->hasActivated) && !isset($user->tf_url))
+                    belum
+                    @elseif (!isset($user->hasActivated) && isset($user->tf_url))
+                    menunggu
+                    @else
+                    ditolak
+                    @endif
+
+                    @if (isset($user->hasTested))
+                    Sudah Test
+                    @endif
+                  </td>
+
+                </tr>
+
+                @endforeach
+              </tbody>
+            </table>
+            <!-- print script on here -->
+            <script>
+              function printData() {
+                document.getElementsByClassName("dt-button")[0].click()
+              }
+            </script>
 
           </div>
           <!-- /.card-body -->

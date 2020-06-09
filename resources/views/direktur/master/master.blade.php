@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- data tables config -->
+  <link rel="stylesheet" href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <style>
     .lolita {
       position: fixed;
@@ -192,13 +194,14 @@
                   Dashboard
                 </p>
               </a>
+            </li>
 
             <li class="nav-item">
-              <!-- <a href="/admin/view/soal" class="nav-link"> -->
-              <!-- <i class="nav-icon fas fa-th"></i> -->
-              <!-- <p>
-                  Soal
-                </p> -->
+              <a href="/direktur/view/pengaturan" class="nav-link">
+                <i class="nav-icon fas fa-adjust"></i>
+                <p>
+                  Pengaturan
+                </p>
               </a>
             </li>
 
@@ -253,12 +256,25 @@
   <!-- AdminLTE for demo purposes -->
   <script src="../../dist/js/demo.js"></script>
   <!-- page script -->
+  <script src="../../plugins/datatables-buttons/js/dataTables.buttons.js"></script>
+  <script src="../../plugins/datatables-buttons/js/buttons.print.js"></script>
   <script>
     $(function() {
-      $("#example1").DataTable({
-        "responsive": true,
-        "autoWidth": false,
+      var tableHide = $("#tableHide").DataTable({
+        responsive: true,
+        autoWidth: false,
+        dom: 'flrtipB',
+        buttons: ['print']
       });
+      var tableReal = $("#tableReal").DataTable({
+        responsive: true,
+        // order: [
+        //   [1, 'asc']
+        // ],
+        autoWidth: false
+      });
+      
+      $(".dt-button").hide();
     });
   </script>
   <script type="text/javascript">

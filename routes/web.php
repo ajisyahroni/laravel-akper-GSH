@@ -31,6 +31,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/dashboard', 'AdminController@dashboard')->name('dashboard.admin.view');
         Route::get('/show-user/detail/id={id}', 'AdminController@showUserDetail');
         Route::get('/soal', 'AdminController@showSoal');
+        Route::get('/pengaturan', 'AdminController@pengaturan')->name('pengaturan.admin.view');
     });
 
     // ACTION
@@ -50,6 +51,11 @@ Route::group(['prefix' => 'admin'], function () {
             Route::post('/update/id={id}', 'SoalController@update')->name('update.soal');
             Route::get('/delete/id={id}', 'SoalController@destroy')->name('delete.soal');
         });
+
+        Route::group(['prefix' => 'pengaturan'], function () {
+            Route::post('/change-pass', 'AdminController@changePassword')->name('change.password.admin');
+        });
+
     });
 });
 
@@ -65,12 +71,14 @@ Route::group(['prefix' => 'direktur'], function () {
         Route::get('/login', 'DirekturController@login_view')->name('login.direktur.view');
         Route::get('/dashboard', 'DirekturController@dashboard')->name('dashboard.direktur.view');
         Route::get('/show-user/detail/id={id}', 'DirekturController@userById');
+        Route::get('/pengaturan', 'DirekturController@pengaturan')->name('pengaturan.direktur.view');
     });
 
     // ACTION
     Route::group(['prefix' => 'action'], function () {
         Route::post('/login-direktur', 'DirekturController@login')->name('login.direktur');
         Route::get('/logout-direktur', 'DirekturController@logout')->name('logout.direktur');
+        Route::post('/change-pass', 'DirekturController@changePassword')->name('change.password.direktur');
     });
 });
 

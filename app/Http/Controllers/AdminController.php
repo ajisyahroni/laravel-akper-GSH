@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Admin;
 use App\Soal;
-
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -148,5 +148,29 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function pengaturan()
+    {
+        return view('admin/pengaturan_admin');
+    }
+    public function changePassword(Request $req)
+    {
+        $admin = Auth::guard('admin')->user();
+        $oldPassword = $req->oldPassword;
+        $newPassword = $req->newPassword;
+        $confirmNewPassword = $req->confirmNewPassword;
+        if (Hash::check($oldPassword, $admin->password)) {
+            if ($newPassword == $confirmNewPassword) {
+                $id = $admin->id;
+                $updateAdmin = Admin::find($id);
+                $updateAdmin->password = bcrypt($newPassword);
+                $updateAdmin->update();
+                return redirect()->back()->withErrors(['berhasil']);
+            } else {
+                return redirect()->back()->withErrors(['password baru & konfirmasi password tidak valid']);
+            }
+        } else {
+            return redirect()->back()->withErrors(['password lama tidak valid']);
+        }
     }
 }

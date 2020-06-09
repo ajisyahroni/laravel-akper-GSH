@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Direktur;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class DirekturController extends Controller
 {
@@ -109,5 +111,29 @@ class DirekturController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function pengaturan()
+    {
+        return view('direktur/pengaturan_direktur');
+    }
+    public function changePassword(Request $req)
+    {
+        $direktur = Auth::guard('direktur')->user();
+        $oldPassword = $req->oldPassword;
+        $newPassword = $req->newPassword;
+        $confirmNewPassword = $req->confirmNewPassword;
+        if (Hash::check($oldPassword, $direktur->password)) {
+            if ($newPassword == $confirmNewPassword) {
+                $id = $direktur->id;
+                $updateAdmin = Direktur::find($id);
+                $updateAdmin->password = bcrypt($newPassword);
+                $updateAdmin->update();
+                return redirect()->back()->withErrors(['berhasil']);
+            } else {
+                return redirect()->back()->withErrors(['password baru & konfirmasi password tidak valid']);
+            }
+        } else {
+            return redirect()->back()->withErrors(['password lama tidak valid']);
+        }
     }
 }
