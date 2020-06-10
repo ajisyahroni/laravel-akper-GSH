@@ -93,7 +93,7 @@
       <div class="row">
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
           <div class="icon-box">
-            <img class="img-thumbnail" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-1.jpg" alt="">
+            <img class="img-thumbnail" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-1.png" alt="">
             <h4><a href="">Ayo Lawan Virus Corona Bersama Mahasiswa Akper GSH Wonogiri Dengan #4M</a></h4>
             <p>Beberapa waktu ini, dunia sedang dihebohkan dengan suatu penyakit yang disebabkan oleh virus coronavirus. Virus...</p>
           </div>
@@ -101,7 +101,7 @@
 
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
           <div class="icon-box">
-            <img class="img-thumbnail" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-2.jpg" alt="">
+            <img class="img-thumbnail" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-2.png" alt="">
             <h4><a href="">PERSIAPAN LED dan LKPT utk akreditasi AIPT 3.0</a></h4>
             <p>Dalam rangka peningkatan mutu dan kualitas AKPER GSH Wonogiri, pada tanggal 28 Oktober 2019 pihak...</p>
           </div>
@@ -109,7 +109,7 @@
 
         <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
           <div class="icon-box">
-            <img class="img-thumbnail" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-3.jpg" alt="">
+            <img class="img-thumbnail" style="margin-top:-60px;" src="assets/img/testimonials/testimonials-3.png" alt="">
             <h4><a href="">SEMINAR NASIONAL KEPERAWATAN</a></h4>
             <p>Kegiatan seminar nasional kewirausahaan dalam praktek mandiri keperawatan di akper GSH Wonogiri bersama Alumni GSH</p>
           </div>
