@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Soal;
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
@@ -22,7 +23,7 @@ class SoalController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function indexRandom()
+    public function indexRandom(Request $request)
     {
         // OLD LOGIC
         // if (Auth::check()) {
@@ -34,18 +35,35 @@ class SoalController extends Controller
             $allSoal = Soal::all();
             $countSoal = $allSoal->count();
 
-            if($countSoal > 0){
+            if ($countSoal > 0) {
                 if ($countSoal >= 100) {
-                    $soal = Soal::all()->random($this->totalQuestion);
+                    // original code
+                    // $soal = Soal::all()->random($this->totalQuestion);
+                    // $some = Paginator::make($soal->toArray());
+
+                    // $get_soal_limit = Soal::inRandomOrder()->get()->toArray();
+                    // $soal = new Paginator($get_soal_limit, 2, 1, [
+                    //     'path' => $request->url(),
+                    //     'query' => $request->query(),
+                    // ]);
+                    $waktu_mulai = Carbon::now();
+                    $waktu_selesai = Carbon::now()->addMinutes(120);
+
+                    $soal = Soal::simplePaginate(5);
+                    // return $soal;
                     $total = $soal->count();
-                    return view('user/test_user', ['soals' => $soal, 'total' => $total]);
+                    return view('user/test_user', [
+                        'soals' => $soal, 
+                        'total' => $total,
+                        'waktu_mulai'=>$waktu_mulai,
+                        'waktu_selesai'=>$waktu_selesai
+                        ]);
                 } else {
                     $soal = Soal::inRandomOrder()->get();
                     $total = $soal->count();
                     return view('user/test_user', ['soals' => $soal, 'total' => $total]);
                 }
-            }
-            else{
+            } else {
                 return "sedang dalam proses penyusunan soal";
             }
         }
@@ -57,10 +75,9 @@ class SoalController extends Controller
             $object = json_decode($request->getContent(), true);
             $countSoal = Soal::all()->count();
             $pointPerSoal = 0;
-            if($countSoal >= 100){
+            if ($countSoal >= 100) {
                 $pointPerSoal = 1;
-            }
-            else{
+            } else {
                 $pointPerSoal = 100 / $countSoal;
             }
 
