@@ -10,7 +10,7 @@
     </div>
 
     <div>
-      <small>{{$waktu_mulai->format('d M H:i:s')}}</small>
+      <small>{{$waktu_mulai}}</small>
       <br>
       <small id="timer"></small>
     </div>
@@ -18,27 +18,6 @@
 </header>
 <!-- End Header -->
 
- <script>
-  // Set the date we're counting down to
-  var countDownDate = new Date("{{$waktu_selesai}}").getTime();
-  
-  var x = setInterval(function() {
-    var now = new Date().getTime();
-    var distance = countDownDate - now;
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      
-    document.getElementById("timer").innerHTML =  hours + " j : "
-    + minutes + " m : " + seconds + " dtk ";
-      
-    if (distance < 0) {
-      clearInterval(x);
-      document.write("timer").innerHTML = "EXPIRED";
-    }
-  }, 1000);
-</script>
 
 <nav class="navbar fixed-bottom bg-white">
   <small>
@@ -209,7 +188,7 @@
       if (c) {
         let opt = {
           method: 'POST',
-          body: localStorage.getItem('array_of_answer'),
+          body: localStorage.getItem('array_of_answer') ? localStorage.getItem('array_of_answer') : [],
           headers: {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -267,5 +246,43 @@
 
     }
   </script>
+  
+ <script>
+  // Set the date we're counting down to
+  var countDownDate = new Date("{{$waktu_selesai}}").getTime();
+  
+  var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+    document.getElementById("timer").innerHTML =  hours + " j : "
+    + minutes + " m : " + seconds + " dtk ";
+      
+    if (distance < 0) {
+      clearInterval(x);
+      let opt = {
+          method: 'POST',
+          body: localStorage.getItem('array_of_answer'),
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        }
+        fetch('{{ url("user/action/koreksi/test") }}', opt)
+          .then(r => {
+            if (r.ok) {
+              // return r.json()
+              localStorage.clear();
+              document.write("waktumu sudah habis");
+              window.location.href = "{{ url('user/view/dashboard') }}"
+            }
+          })
+    }
+  }, 1000);
+</script>
 </div>
 @endsection

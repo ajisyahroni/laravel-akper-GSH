@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Soal;
+use App\Test;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Pagination\Paginator;
@@ -35,36 +36,66 @@ class SoalController extends Controller
             $allSoal = Soal::all();
             $countSoal = $allSoal->count();
 
-            if ($countSoal > 0) {
-                if ($countSoal >= 100) {
-                    // original code
-                    // $soal = Soal::all()->random($this->totalQuestion);
-                    // $some = Paginator::make($soal->toArray());
-
-                    // $get_soal_limit = Soal::inRandomOrder()->get()->toArray();
-                    // $soal = new Paginator($get_soal_limit, 2, 1, [
-                    //     'path' => $request->url(),
-                    //     'query' => $request->query(),
-                    // ]);
-                    $waktu_mulai = Carbon::now();
-                    $waktu_selesai = Carbon::now()->addMinutes(120);
-
-                    $soal = Soal::simplePaginate(5);
-                    // return $soal;
-                    $total = $soal->count();
-                    return view('user/test_user', [
-                        'soals' => $soal, 
-                        'total' => $total,
-                        'waktu_mulai'=>$waktu_mulai,
-                        'waktu_selesai'=>$waktu_selesai
-                        ]);
-                } else {
-                    $soal = Soal::inRandomOrder()->get();
-                    $total = $soal->count();
-                    return view('user/test_user', ['soals' => $soal, 'total' => $total]);
-                }
+            $user_tested = Auth::user()->hasTested;
+            if ($user_tested) {
+                return 'anda sudah melakukan test';
             } else {
-                return "sedang dalam proses penyusunan soal";
+                $test = Test::where('user_id', '=', Auth::id())->first();
+                // $waktu_selese = new Carbon($test->waktu_selesai);
+                if ($test != null && Carbon::now()->gte($test->waktu_selesai)) {
+                    return 'waktumu sudah habis';
+                } else {
+                    $get_test_data = Test::where('user_id', '=', Auth::id())->first();
+                    if (!$get_test_data) {
+                        $waktu_mulai = Carbon::now();
+                        $waktu_selesai = Carbon::now()->addMinutes(2);
+                        $inserted_test = Test::create([
+                            'user_id' => Auth::id(),
+                            'waktu_mulai' => $waktu_mulai,
+                            'waktu_selesai' => $waktu_selesai,
+                        ]);
+                        if ($countSoal > 0) {
+                            if ($countSoal >= 100) {
+                                $soal = Soal::simplePaginate(5);
+                                $total = $soal->count();
+                                $arr = [
+                                    'soals' => $soal,
+                                    'total' => $total,
+                                    'waktu_mulai' => $inserted_test->waktu_mulai,
+                                    'waktu_selesai' => $inserted_test->waktu_selesai
+                                ];
+                                return view('user/test_user', $arr);
+                            } else {
+                                $soal = Soal::inRandomOrder()->get();
+                                $total = $soal->count();
+                                return view('user/test_user', ['soals' => $soal, 'total' => $total]);
+                            }
+                        } else {
+                            return "sedang dalam proses penyusunan soal";
+                        }
+                        
+                    } else {
+                        if ($countSoal > 0) {
+                            if ($countSoal >= 100) {
+                                $soal = Soal::simplePaginate(5);
+                                $total = $soal->count();
+                                $arr = [
+                                    'soals' => $soal,
+                                    'total' => $total,
+                                    'waktu_mulai' => $get_test_data->waktu_mulai,
+                                    'waktu_selesai' => $get_test_data->waktu_selesai
+                                ];
+                                return view('user/test_user', $arr);
+                            } else {
+                                $soal = Soal::inRandomOrder()->get();
+                                $total = $soal->count();
+                                return view('user/test_user', ['soals' => $soal, 'total' => $total]);
+                            }
+                        } else {
+                            return "sedang dalam proses penyusunan soal";
+                        }
+                    }
+                }
             }
         }
     }
