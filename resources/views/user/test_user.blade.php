@@ -39,7 +39,7 @@
 
   @foreach($soals as $no => $soal)
   <div class="row d-block p-3">
-    <h5 id="{{ $soal->id }}" class="pertanyaan">{{ $soals->firstItem() + $no }}.{{ $soal->pertanyaan }}?</h5>
+    <h5 id="{{ $soal->id }}" class="pertanyaan">{{ $soals->firstItem() + $no }}. <span>{{ $soal->pertanyaan }}</span>?</h5>
     <div class="form-check">
       <input 
         onclick="saveToStorage(this)" 
@@ -188,7 +188,7 @@
       if (c) {
         let opt = {
           method: 'POST',
-          body: localStorage.getItem('array_of_answer') ? localStorage.getItem('array_of_answer') : [],
+          body: localStorage.getItem('array_of_answer') != null ? localStorage.getItem('array_of_answer') : [],
           headers: {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -266,7 +266,7 @@
       clearInterval(x);
       let opt = {
           method: 'POST',
-          body: localStorage.getItem('array_of_answer'),
+          body: localStorage.getItem('array_of_answer') != null ? localStorage.getItem('array_of_answer') : [],
           headers: {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

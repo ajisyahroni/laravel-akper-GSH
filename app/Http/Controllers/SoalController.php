@@ -113,23 +113,34 @@ class SoalController extends Controller
             }
 
 
-            foreach ($object as $key => $value) {
-                $singleSoal = Soal::where('id', $value["id"])->first();
-
-                if ($singleSoal) {
-                    if ($singleSoal->jawaban == $value['jawaban']) {
-                        $score += $pointPerSoal;
+            if($object){
+                foreach ($object as $key => $value) {
+                    $singleSoal = Soal::where('id', $value["id"])->first();
+    
+                    if ($singleSoal) {
+                        if ($singleSoal->jawaban == $value['jawaban']) {
+                            $score += $pointPerSoal;
+                        }
                     }
                 }
+    
+                $id = Auth::id();
+                $singleUser = User::where('id', $id)->first();
+                $singleUser->hasTested = Carbon::now();
+                $singleUser->score = $score > 100 ? 100 : $score;
+                $singleUser->save();
+    
+                return response()->json(['msg' => 'berhasil koreksi', 'score' => $score], 200);
             }
-
-            $id = Auth::id();
-            $singleUser = User::where('id', $id)->first();
-            $singleUser->hasTested = Carbon::now();
-            $singleUser->score = $score > 100 ? 100 : $score;
-            $singleUser->save();
-
-            return response()->json(['msg' => 'berhasil koreksi', 'score' => $score], 200);
+            else{
+                $id = Auth::id();
+                $singleUser = User::where('id', $id)->first();
+                $singleUser->hasTested = Carbon::now();
+                $singleUser->score = 0;
+                $singleUser->save();
+    
+                return response()->json(['msg' => 'berhasil koreksi', 'score' => $score], 200);
+            }
         }
     }
 
