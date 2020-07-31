@@ -9,6 +9,7 @@ use App\Test;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
@@ -97,13 +98,20 @@ class SoalControllerTry extends Controller
                     'query' => request()->query()
                 ]
             );
+            // action_koreksi 
+            $app_environment = App::environment('local');
+            $action_koreksi = $app_environment
+                ? request()->getSchemeAndHttpHost() . '/user/action/koreksi/test'
+                : 'https://akper-gsh.herokuapp.com/user/action/koreksi/test';
             // return $array;
             $arr = [
                 'soals' => $array,
                 'links' => $paginate,
                 'total' => $total,
                 'waktu_mulai' => $waktu_mulai,
-                'waktu_selesai' => $waktu_selesai
+                'waktu_selesai' => $waktu_selesai,
+                'action_koreksi' => $action_koreksi
+
             ];
             return view('user/try_test_user', $arr);
         } else {

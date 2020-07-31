@@ -215,7 +215,7 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 }
-                    fetch('{{ request()->getSchemeAndHttpHost() }}' + '/user/action/koreksi/test',opt)
+                    fetch('{{ $action_koreksi }}',opt)
                     .then(r => {
                         if (r.ok) {
                             localStorage.clear();
@@ -251,7 +251,7 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 }
-                    fetch('{{ request()->getSchemeAndHttpHost() }}' + '/user/action/koreksi/test',opt)
+                    fetch('{{ $action_koreksi }}',opt)
                     .then(r => {
                         if (r.ok) {
                             localStorage.clear();
