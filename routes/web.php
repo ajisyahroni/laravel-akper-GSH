@@ -107,8 +107,7 @@ Route::group(['prefix' => 'user'], function () {
         Route::post('/upload/tf', 'UserController@uploadTransfer')->name('upload.tf');
         // change cors on koreksi
         Route::post('/koreksi/test', 'SoalController@koreksi')
-            ->name('koreksi.user')
-            ->middleware(Cors::class);
+            ->name('koreksi.user');
     });
 });
 
