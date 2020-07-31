@@ -55,7 +55,6 @@ Route::group(['prefix' => 'admin'], function () {
         Route::group(['prefix' => 'pengaturan'], function () {
             Route::post('/change-pass', 'AdminController@changePassword')->name('change.password.admin');
         });
-
     });
 });
 
@@ -94,7 +93,11 @@ Route::group(['prefix' => 'user'], function () {
         Route::get('/login', 'UserController@login_view')->name('login.view');
         Route::get('/dashboard', 'UserController@dashboard_view')->name('dashboard.view')->middleware('auth');
         Route::get('/registration', 'UserController@register_view')->name('registration.view');
-        Route::get('/test', 'SoalController@indexRandom')->name('test.user')->middleware('auth');
+        // Route::get('/test', 'SoalController@indexRandom')->name('test.user')->middleware('auth');
+        // TODO finishing this test
+        Route::get('/test', 'SoalControllerTry@indexRandom')
+            ->name('test.user')
+            ->middleware('auth');
     });
 
     // ACTIONS
