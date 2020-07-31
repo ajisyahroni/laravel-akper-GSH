@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Middleware\Cors;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -94,7 +94,6 @@ Route::group(['prefix' => 'user'], function () {
         Route::get('/dashboard', 'UserController@dashboard_view')->name('dashboard.view')->middleware('auth');
         Route::get('/registration', 'UserController@register_view')->name('registration.view');
         // Route::get('/test', 'SoalController@indexRandom')->name('test.user')->middleware('auth');
-        // TODO finishing this test
         Route::get('/test', 'SoalControllerTry@indexRandom')
             ->name('test.user')
             ->middleware('auth');
@@ -106,7 +105,10 @@ Route::group(['prefix' => 'user'], function () {
         Route::post('/create-user', 'UserController@create')->name('register.user');
         Route::post('/login-user', 'UserController@login')->name('login.user');
         Route::post('/upload/tf', 'UserController@uploadTransfer')->name('upload.tf');
-        Route::post('/koreksi/test', 'SoalController@koreksi')->name('koreksi.user');
+        // change cors on koreksi
+        Route::post('/koreksi/test', 'SoalController@koreksi')
+            ->name('koreksi.user')
+            ->middleware(Cors::class);
     });
 });
 
